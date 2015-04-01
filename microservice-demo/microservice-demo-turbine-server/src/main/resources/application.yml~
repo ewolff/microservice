@@ -1,0 +1,19 @@
+server:
+  port: 8989
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/    
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    preferIpAddress: true
+    
+turbine:
+  appConfig: ORDER
+#  clusterNameExpression: new String("default")
+
+  

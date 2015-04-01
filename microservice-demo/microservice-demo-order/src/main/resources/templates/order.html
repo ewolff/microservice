@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Order</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Order</h1>
+	<div layout:fragment="content" class="container">
+
+		<div class="row">
+			<div class="col-md-2">Customer</div>
+			<div class="col-md-2"
+				th:text="${@customerClient.getOne(order.customerId).firstname}+' '+${@customerClient.getOne(order.customerId).name}"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">Total price</div>
+			<div class="col-md-2" th:text="${order.totalPrice(@catalogClient)}"></div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-2 col-md-offset-1">Order Lines</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2">Quantity</div>
+			<div class="col-md-2">Item</div>
+			<div class="col-md-2">Price</div>
+
+		</div>
+
+		<div class="row" th:each="orderLine : ${order.orderLine}">
+			<div class="col-md-2" th:text="${orderLine.count}"></div>
+			<div class="col-md-2" th:text="${@catalogClient.getOne(orderLine.itemId).name}"></div>
+			<div class="col-md-2" th:text="${@catalogClient.getOne(orderLine.itemId).price}"></div>
+		</div>
+	</div>
+</body>
+</html>

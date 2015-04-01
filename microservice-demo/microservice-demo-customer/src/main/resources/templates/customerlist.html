@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Customer : View all</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Customer : View all</h1>
+	<div layout:fragment="content" class="container">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>id</td>
+					<td>Name</td>
+					<td>Firstname</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${customers.empty}">
+					<td colspan="4">No customers</td>
+				</tr>
+				<tr th:each="customer : ${customers}">
+					<td><a href="1.html" th:href="${customer.id+'.html'}"
+						th:text="${customer.id}">1</a></td>
+					<td th:text="${customer.name}">Name</td>
+					<td th:text="${customer.firstname}">Firstname</td>
+					<td><form th:action="'/customer/'+${customer.id}"
+							th:method="delete">
+							<input type="submit" value="delete" class="btn btn-link" />
+						</form></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/customer/add.html">Add Customer</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

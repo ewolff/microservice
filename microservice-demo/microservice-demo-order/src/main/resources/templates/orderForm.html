@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Order : Add</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Order : Add</h1>
+	<div layout:fragment="content" class="container">
+		<form action="/order/" th:object="${order}" method="post" role="form">
+			<div class="form-group">
+				<label for="selectCustomer">Customer</label> <select
+					name="selectCustomer" th:field="*{customerId}">
+					<option th:each="customer : ${customers}"
+						th:label="${customer.firstname}+' '+${customer.name}"
+						label="Rod Johnson" th:value="${customer.customerId}" value="42" />
+				</select>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<label>Id</label>
+				</div>
+				<div class="col-xs-2">
+					<label>Count</label>
+				</div>
+				<div class="col-xs-2">
+					<label>Item</label>
+				</div>
+			</div>
+			<div class="row"
+				th:each="orderLine, orderLineStat : *{orderLine}">
+				<div class="col-xs-2" th:text="${orderLineStat.count}">1</div>
+				<div class="col-xs-2">
+					<input type="text"
+						th:field="*{orderLine[__${orderLineStat.index}__].count}" />
+				</div>
+				<div class="col-xs-2">
+					<select
+						th:field="*{orderLine[__${orderLineStat.index}__].itemId}">
+						<option th:each="item : ${items}" th:label="${item.name}"
+							label="MacBook" th:value="${item.itemId}" value="42" />
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<button type="submit" name="addLine" class="btn btn-default">Add
+					Line</button>
+				<button type="submit" name="submit" class="btn btn-default">Submit</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

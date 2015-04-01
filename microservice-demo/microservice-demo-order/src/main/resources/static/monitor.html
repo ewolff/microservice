@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Monitoring</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+</head>
+<body>
+	<h1 layout:fragment="header">Monitoring Links</h1>
+	<div layout:fragment="content">
+
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td><a href="/hystrix">Hystrix</a></td>
+				<td>Hystrix dashboard. The URL you enter in the dashboard must
+					be the IP of the Docker container e.g.
+					http://172.17.0.40:8080/hystrix.stream</td>
+			</tr>
+			<tr>
+				<td><a href="autoconfig">autoconfig</a></td>
+				<td>Displays an auto-configuration report showing all
+					auto-configuration candidates and the reason why they were or were
+					not applied.</td>
+			</tr>
+			<tr>
+				<td><a href="beans">beans</a></td>
+				<td>Displays a complete list of all the Spring Beans in your
+					application.</td>
+			</tr>
+			<tr>
+				<td><a href="configprops">configprops</a></td>
+				<td>Displays a collated list of all @ConfigurationProperties.</td>
+			</tr>
+			<tr>
+				<td><a href="dump">dump</a></td>
+				<td>Performs a thread dump.</td>
+			</tr>
+			<tr>
+				<td><a href="env">env</a></td>
+				<td>Exposes properties from Spring's ConfigurableEnvironment.</td>
+			</tr>
+			<tr>
+				<td><a href="health">health</a></td>
+				<td>Shows application health information (defaulting to a
+					simple OK message).</td>
+			</tr>
+			<tr>
+				<td><a href="info">info</a></td>
+				<td>Displays arbitrary application info.</td>
+			</tr>
+			<tr>
+				<td><a href="metrics">metrics</a></td>
+				<td>Shows metrics information for the current application.</td>
+			</tr>
+			<tr>
+				<td><a href="mappings">mappings</a></td>
+				<td>Displays a collated list of all @RequestMapping paths.</td>
+			</tr>
+			<tr>
+				<td><a href="shutdown">shutdown</a></td>
+				<td>Allows the application to be gracefully shutdown (not
+					enabled by default).</td>
+			</tr>
+			<tr>
+				<td><a href="trace">trace</a></td>
+				<td>Displays trace information (by default the last few HTTP
+					requests).</td>
+			</tr>
+
+		</table>
+	</div>
+	</div>
+</body>
+</html>

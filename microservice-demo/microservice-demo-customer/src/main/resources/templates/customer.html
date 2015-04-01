@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Customer : Edit</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Customer : Edit</h1>
+	<div layout:fragment="content" class="container">
+		<form th:action="${customer.id!=0} ? '/customer/'+${customer.id}+'.html' : '/customer/add.html' " th:object="${customer}"
+			th:method="${customer.id != 0} ? put : post" role="form">
+			<div class="form-group">
+				<label for="inputName">Name</label> <input type="text"
+					th:field="*{name}" class="form-control" placeholder="name" />
+			</div>
+
+			<div class="form-group">
+				<label for="inputName">Firstname</label> <input type="text"
+					th:field="*{firstname}" class="form-control"
+					placeholder="firstname" />
+			</div>
+
+			<div class="form-group">
+				<label for="inputName">EMail</label> <input type="text"
+					th:field="*{email}" class="form-control"
+					placeholder="email" />
+			</div>
+
+			<div class="form-group">
+				<label for="inputName">Street</label> <input type="text"
+					th:field="*{street}" class="form-control"
+					placeholder="street" />
+			</div>
+
+			<div class="form-group">
+				<label for="inputName">City</label> <input type="text"
+					th:field="*{city}" class="form-control"
+					placeholder="city" />
+			</div>
+
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</body>
+</html>

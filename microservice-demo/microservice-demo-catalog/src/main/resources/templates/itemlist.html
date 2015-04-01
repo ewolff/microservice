@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Item : View all</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Item : View all</h1>
+	<div layout:fragment="content" class="container">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>id</td>
+					<td>Name</td>
+					<td>Price</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${items.empty}">
+					<td colspan="4">No items</td>
+				</tr>
+				<tr th:each="item : ${items}">
+					<td><a href="1.html" th:href="${item.id}+'.html'"
+						th:text="${item.id}">1</a></td>
+					<td th:text="${item.name}">Name</td>
+					<td th:text="${item.price}">42.0</td>
+					<td><form th:action="'/item/'+${item.id}"
+							th:method="delete">
+							<input type="submit" value="delete" class="btn btn-link" />
+						</form></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="add.html">Add Item</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

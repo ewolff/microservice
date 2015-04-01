@@ -1,0 +1,33 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "chef/ubuntu-14.04"
+  config.vm.synced_folder "../microservice-demo", "/microservice-demo", create: true
+  config.vm.network "forwarded_port", guest: 8080, host: 18080
+  config.vm.network "forwarded_port", guest: 8989, host: 18989
+  config.vm.network "forwarded_port", guest: 8761, host: 18761
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+    v.cpus = 2
+  end
+  
+  config.vm.provision "docker" do |d|
+    d.build_image "--tag=java /vagrant/java"
+    d.build_image "--tag=eureka /vagrant/eureka"
+    d.build_image "--tag=customer-app /vagrant/customer-app"
+    d.build_image "--tag=catalog-app /vagrant/catalog-app"
+    d.build_image "--tag=order-app /vagrant/order-app"
+    d.build_image "--tag=turbine /vagrant/turbine"
+    
+    d.run "eureka",
+      args: "-p 8761:8761 -v /microservice-demo:/microservice-demo"
+    d.run "customer-app",
+      args: "-v /microservice-demo:/microservice-demo --link eureka:eureka"
+    d.run "catalog-app",
+      args: "-v /microservice-demo:/microservice-demo --link eureka:eureka"
+    d.run "order-app",
+      args: "-p 8080:8080 -v /microservice-demo:/microservice-demo --link eureka:eureka"
+    d.run "turbine",
+      args: "-p 8989:8989 -v /microservice-demo:/microservice-demo --link eureka:eureka"
+  end
+
+end

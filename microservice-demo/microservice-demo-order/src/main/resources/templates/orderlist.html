@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Order : View all</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Order : View all</h1>
+	<div layout:fragment="content" class="container">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>id</td>
+					<td>Customer</td>
+					<td>Total Price</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${orders.empty}">
+					<td colspan="4">No orders</td>
+				</tr>
+				<tr th:each="order : ${orders}">
+					<td><a href="order/1" th:href="${order.id}"
+						th:text="${order.id}">1</a></td>
+					<td
+						th:text="${@customerClient.getOne(order.customerId).firstname} + ' ' + ${@customerClient.getOne(order.customerId).name}">Firstname
+						Name</td>
+					<td th:text="${order.totalPrice(@catalogClient)}">42.0</td>
+					<td><form th:action="'/order/'+${order.id}" th:method="delete">
+							<input type="submit" value="delete" class="btn btn-link" />
+						</form></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/order/add">Add Order</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
