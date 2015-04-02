@@ -1,5 +1,7 @@
 package com.ewolff.microservice.customer.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,6 @@ import com.ewolff.microservice.customer.domain.Customer;
 import com.ewolff.microservice.customer.repository.CustomerRepository;
 
 @Controller
-@RequestMapping("/customer")
 public class CustomerController {
 
 	private CustomerRepository customerRepository;
@@ -40,18 +41,23 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/add.html", method = RequestMethod.POST)
-	public ModelAndView post(Customer customer) {
+	public ModelAndView post(Customer customer, HttpServletRequest httpRequest) {
 		customer = customerRepository.save(customer);
-		return new ModelAndView("redirect:/customer/" + customer.getId()
-				+ ".html");
+		return new ModelAndView("success");
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.PUT)
-	public ModelAndView put(@PathVariable("id") long id, Customer customer) {
+	public ModelAndView put(@PathVariable("id") long id, Customer customer,
+			HttpServletRequest httpRequest) {
 		customer.setId(id);
 		customerRepository.save(customer);
-		return new ModelAndView("redirect:/customer/" + customer.getId()
-				+ ".html");
+		return new ModelAndView("success");
+	}
+
+	@RequestMapping(value = "/{id}.html", method = RequestMethod.DELETE)
+	public ModelAndView delete(@PathVariable("id") long id) {
+		customerRepository.delete(id);
+		return new ModelAndView("success");
 	}
 
 }

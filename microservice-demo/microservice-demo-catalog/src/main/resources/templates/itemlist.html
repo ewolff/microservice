@@ -22,11 +22,11 @@
 					<td colspan="4">No items</td>
 				</tr>
 				<tr th:each="item : ${items}">
-					<td><a href="1.html" th:href="${item.id}+'.html'"
+					<td><a href="1.html" th:href="${item.id+'.html'}"
 						th:text="${item.id}">1</a></td>
 					<td th:text="${item.name}">Name</td>
 					<td th:text="${item.price}">42.0</td>
-					<td><form th:action="'/item/'+${item.id}"
+					<td><form th:action="${item.id+'.html'}"
 							th:method="delete">
 							<input type="submit" value="delete" class="btn btn-link" />
 						</form></td>

@@ -13,7 +13,6 @@ import com.ewolff.microservice.catalog.domain.Item;
 import com.ewolff.microservice.catalog.repository.ItemRepository;
 
 @Controller
-@RequestMapping("/catalog")
 public class CatalogController {
 
 	private ItemRepository itemRepository;
@@ -41,14 +40,14 @@ public class CatalogController {
 	@RequestMapping(value = "/add.html", method = RequestMethod.POST)
 	public ModelAndView post(Item Item) {
 		Item = itemRepository.save(Item);
-		return new ModelAndView("redirect:/catalog/" + Item.getId() + ".html");
+		return new ModelAndView("success");
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.PUT)
 	public ModelAndView put(@PathVariable("id") long id, Item item) {
 		item.setId(id);
 		itemRepository.save(item);
-		return new ModelAndView("redirect:/catalog/" + item.getId() + ".html");
+		return new ModelAndView("success");
 	}
 
 	@RequestMapping(value = "/searchForm.html", produces = MediaType.TEXT_HTML_VALUE)
@@ -60,6 +59,12 @@ public class CatalogController {
 	public ModelAndView search(@RequestParam("query") String query) {
 		return new ModelAndView("itemlist", "items",
 				itemRepository.findByNameContaining(query));
+	}
+
+	@RequestMapping(value = "/{id}.html", method = RequestMethod.DELETE)
+	public ModelAndView delete(@PathVariable("id") long id) {
+		itemRepository.delete(id);
+		return new ModelAndView("success");
 	}
 
 }

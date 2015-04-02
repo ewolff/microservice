@@ -8,7 +8,7 @@
 <body>
 	<h1 layout:fragment="header">Order : Add</h1>
 	<div layout:fragment="content" class="container">
-		<form action="/order/" th:object="${order}" method="post" role="form">
+		<form action="." th:object="${order}" method="post" role="form">
 			<div class="form-group">
 				<label for="selectCustomer">Customer</label> <select
 					name="selectCustomer" th:field="*{customerId}">

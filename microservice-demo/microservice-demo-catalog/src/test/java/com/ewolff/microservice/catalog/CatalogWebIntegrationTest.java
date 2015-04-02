@@ -30,7 +30,7 @@ import com.ewolff.microservice.catalog.repository.ItemRepository;
 @IntegrationTest("server.port=0")
 @WebAppConfiguration
 @ActiveProfiles("test")
-public class WebIntegrationTest {
+public class CatalogWebIntegrationTest {
 
 	@Autowired
 	private ItemRepository itemRepository;
@@ -50,18 +50,20 @@ public class WebIntegrationTest {
 
 	@Test
 	public void IsItemReturnedAsHTML() {
-		String url = "http://127.0.0.1:" + serverPort + "/catalog/"
-				+ iPodNano.getId() + ".html";
+		String url = catalogURL() + "/" + iPodNano.getId() + ".html";
 		String body = getForMediaType(String.class, MediaType.TEXT_HTML, url);
 
 		assertThat(body, containsString("iPod nano"));
 		assertThat(body, containsString("<div"));
 	}
 
+	private String catalogURL() {
+		return "http://localhost:" + serverPort;
+	}
+
 	@Test
 	public void IsItemReturnedAsJON() {
-		String url = "http://127.0.0.1:" + serverPort + "/catalog/"
-				+ iPodNano.getId();
+		String url = catalogURL() + "/catalog/" + iPodNano.getId();
 		Item body = getForMediaType(Item.class, MediaType.APPLICATION_JSON, url);
 
 		assertThat(body, equalTo(iPodNano));
@@ -69,8 +71,7 @@ public class WebIntegrationTest {
 
 	@Test
 	public void FormReturned() {
-		String url = "http://127.0.0.1:" + serverPort
-				+ "/catalog/searchForm.html";
+		String url = catalogURL() + "/searchForm.html";
 		String body = getForMediaType(String.class, MediaType.TEXT_HTML, url);
 
 		assertThat(body, containsString("<form"));
@@ -79,8 +80,7 @@ public class WebIntegrationTest {
 
 	@Test
 	public void SearchWorks() {
-		String url = "http://127.0.0.1:" + serverPort
-				+ "/catalog/search.html?query=iPod";
+		String url = catalogURL() + "/search.html?query=iPod";
 		String body = restTemplate.getForObject(url, String.class);
 
 		assertThat(body, containsString("iPod nano"));

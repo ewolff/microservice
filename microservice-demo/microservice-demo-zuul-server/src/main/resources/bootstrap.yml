@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zuul
+  cloud:
+    config:
+      enabled: false
+     
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/

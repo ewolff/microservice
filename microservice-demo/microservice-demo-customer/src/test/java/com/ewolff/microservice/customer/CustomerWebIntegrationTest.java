@@ -1,12 +1,14 @@
 package com.ewolff.microservice.customer;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
-import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +29,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriTemplate;
 
 import com.ewolff.microservice.customer.domain.Customer;
 import com.ewolff.microservice.customer.repository.CustomerRepository;
@@ -83,7 +84,7 @@ public class CustomerWebIntegrationTest {
 
 		Customer customerWolff = customerRepository.findByName("Wolff").get(0);
 
-		String url = customerURL() + customerWolff.getId();
+		String url = customerURL() + "customer/" + customerWolff.getId();
 		Customer body = getForMediaType(Customer.class,
 				MediaType.APPLICATION_JSON, url);
 
@@ -111,7 +112,7 @@ public class CustomerWebIntegrationTest {
 	}
 
 	private String customerURL() {
-		return "http://localhost:" + serverPort + "/customer/";
+		return "http://localhost:" + serverPort + "/";
 	}
 
 	@Test
@@ -125,6 +126,7 @@ public class CustomerWebIntegrationTest {
 	@Test
 	@Transactional
 	public void IsSubmittedCustomerSaved() {
+		assertEquals(0, customerRepository.findByName("Hoeller").size());
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 		map.add("firstname", "Juergen");
 		map.add("name", "Hoeller");
@@ -132,17 +134,9 @@ public class CustomerWebIntegrationTest {
 		map.add("city", "Linz");
 		map.add("email", "springjuergen@twitter.com");
 
-		URI uri = restTemplate.postForLocation(customerURL() + "add.html", map,
+		restTemplate.postForObject(customerURL() + "add.html", map,
 				String.class);
-		UriTemplate uriTemplate = new UriTemplate(customerURL() + "{id}.html");
-		Map<String, String> pathVariables = uriTemplate.match(uri.toString());
-		Customer customer = customerRepository.findOne(Long
-				.parseLong(pathVariables.get("id")));
-		assertEquals(customer.getFirstname(), "Juergen");
-		assertEquals(customer.getName(), "Hoeller");
-		assertEquals(customer.getStreet(), "Schlossallee");
-		assertEquals(customer.getCity(), "Linz");
-		assertEquals(customer.getEmail(), "springjuergen@twitter.com");
+		assertEquals(1, customerRepository.findByName("Hoeller").size());
 	}
 
 }

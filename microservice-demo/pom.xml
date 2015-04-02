@@ -19,6 +19,7 @@
 		<module>microservice-demo-customer</module>
 		<module>microservice-demo-catalog</module>
 		<module>microservice-demo-order</module>
+		<module>microservice-demo-zuul-server</module>
 	</modules>
 
 	<properties>

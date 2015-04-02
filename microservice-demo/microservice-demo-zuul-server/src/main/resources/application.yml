@@ -1,0 +1,15 @@
+server:
+  port: 8080
+    
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health    
+    
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+
+  

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -84,7 +83,7 @@ public class OrderWebIntegrationTest {
 	}
 
 	private String orderURL() {
-		return "http://localhost:" + serverPort + "/order/";
+		return "http://localhost:" + serverPort;
 	}
 
 	@Test
@@ -98,19 +97,14 @@ public class OrderWebIntegrationTest {
 	@Test
 	@Transactional
 	public void IsSubmittedOrderSaved() {
+		long before = orderRepository.count();
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 		map.add("submit", "");
 		map.add("customerId", Long.toString(customer.getCustomerId()));
 		map.add("orderLine[0].itemId", Long.toString(item.getItemId()));
 		map.add("orderLine[0].count", "42");
 		URI uri = restTemplate.postForLocation(orderURL(), map, String.class);
-		UriTemplate uriTemplate = new UriTemplate(orderURL() + "{id}");
-		Map<String, String> pathVariables = uriTemplate.match(uri.toString());
-		Order order = orderRepository.findOne(Long.parseLong(pathVariables
-				.get("id")));
-		assertEquals(customer.getCustomerId(), order.getCustomerId());
-		assertEquals(1, order.getNumberOfLines());
-		assertEquals(item.getItemId(), order.getOrderLine().get(0).getItemId());
-		assertEquals(42, order.getOrderLine().get(0).getCount());
+		UriTemplate uriTemplate = new UriTemplate(orderURL() + "/{id}");
+		assertEquals(before + 1, orderRepository.count());
 	}
 }

@@ -1,12 +1,9 @@
 package com.ewolff.microservice.order.logic;
 
-import java.beans.PropertyEditorSupport;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +16,6 @@ import com.ewolff.microservice.order.clients.CustomerClient;
 import com.ewolff.microservice.order.clients.Item;
 
 @Controller
-@RequestMapping("/order")
 public class OrderController {
 
 	private OrderRepository orderRepository;
@@ -75,63 +71,14 @@ public class OrderController {
 	@RequestMapping(value = "/", method = RequestMethod.POST, params = { "submit" })
 	public ModelAndView post(Order order) {
 		order = orderService.order(order);
-		return new ModelAndView("redirect:/order/" + order.getId());
+		return new ModelAndView("success");
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ModelAndView post(@PathVariable("id") long id) {
 		orderRepository.delete(id);
-		return new ModelAndView("redirect:/order/");
-	}
 
-	@InitBinder
-	public void initBinder(WebDataBinder webDataBinder) {
-		webDataBinder.registerCustomEditor(Customer.class,
-				new PropertyEditorSupport() {
-
-					long id;
-
-					@Override
-					public void setAsText(String text)
-							throws IllegalArgumentException {
-						id = Long.parseLong(text);
-					}
-
-					@Override
-					public String getAsText() {
-						return Long.toString(id);
-					}
-
-					@Override
-					public Object getValue() {
-						return customerClient.getOne(id);
-					}
-
-				});
-
-		webDataBinder.registerCustomEditor(Item.class,
-				new PropertyEditorSupport() {
-
-					long id;
-
-					@Override
-					public void setAsText(String text)
-							throws IllegalArgumentException {
-						id = Long.parseLong(text);
-					}
-
-					@Override
-					public String getAsText() {
-						return Long.toString(id);
-					}
-
-					@Override
-					public Object getValue() {
-						return catalogClient.getOne(id);
-					}
-
-				});
-
+		return new ModelAndView("success");
 	}
 
 }

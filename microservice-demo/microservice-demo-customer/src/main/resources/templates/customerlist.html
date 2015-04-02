@@ -26,7 +26,7 @@
 						th:text="${customer.id}">1</a></td>
 					<td th:text="${customer.name}">Name</td>
 					<td th:text="${customer.firstname}">Firstname</td>
-					<td><form th:action="'/customer/'+${customer.id}"
+					<td><form th:action="${customer.id}+'.html'"
 							th:method="delete">
 							<input type="submit" value="delete" class="btn btn-link" />
 						</form></td>
@@ -35,7 +35,7 @@
 		</table>
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/customer/add.html">Add Customer</a>
+				<a href="add.html">Add Customer</a>
 			</div>
 		</div>
 	</div>

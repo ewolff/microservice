@@ -8,7 +8,7 @@
 <body>
 	<h1 layout:fragment="header">Customer : Edit</h1>
 	<div layout:fragment="content" class="container">
-		<form th:action="${customer.id!=0} ? '/customer/'+${customer.id}+'.html' : '/customer/add.html' " th:object="${customer}"
+		<form th:action="${customer.id!=0} ? ${customer.id}+'.html' : 'add.html' " th:object="${customer}"
 			th:method="${customer.id != 0} ? put : post" role="form">
 			<div class="form-group">
 				<label for="inputName">Name</label> <input type="text"
