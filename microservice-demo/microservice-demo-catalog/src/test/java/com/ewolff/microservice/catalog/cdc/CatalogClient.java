@@ -25,10 +25,10 @@ public class CatalogClient {
 
 	}
 
-	private RestTemplate restTemplate;
-	private String catalogServiceHost;
-	private long catalogServicePort;
-	private boolean useRibbon;
+	private final RestTemplate restTemplate;
+	private final String catalogServiceHost;
+	private final long catalogServicePort;
+	private final boolean useRibbon;
 	private LoadBalancerClient loadBalancer;
 
 	@Autowired

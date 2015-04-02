@@ -15,7 +15,7 @@ import com.ewolff.microservice.catalog.repository.ItemRepository;
 @Controller
 public class CatalogController {
 
-	private ItemRepository itemRepository;
+	private final ItemRepository itemRepository;
 
 	@Autowired
 	public CatalogController(ItemRepository itemRepository) {

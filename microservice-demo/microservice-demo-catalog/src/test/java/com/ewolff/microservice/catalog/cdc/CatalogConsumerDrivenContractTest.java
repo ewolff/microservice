@@ -23,7 +23,7 @@ import com.ewolff.microservice.catalog.CatalogApp;
 public class CatalogConsumerDrivenContractTest {
 
 	@Autowired
-	CatalogClient catalogClient;
+	private CatalogClient catalogClient;
 
 	@Test
 	public void testFindAll() {
