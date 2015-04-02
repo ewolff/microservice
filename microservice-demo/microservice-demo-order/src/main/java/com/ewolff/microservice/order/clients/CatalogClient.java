@@ -83,7 +83,7 @@ public class CatalogClient {
 		return pagedResources.getContent();
 	}
 
-	public Collection<Item> getItemsCache() {
+	private Collection<Item> getItemsCache() {
 		return itemsCache;
 	}
 

@@ -1,4 +1,4 @@
-package com.ewolff.microservice.order;
+package com.ewolff.microservice.order.logic;
 
 import static org.junit.Assert.*;
 
@@ -22,6 +22,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 
+import com.ewolff.microservice.order.OrderApp;
 import com.ewolff.microservice.order.clients.CatalogClient;
 import com.ewolff.microservice.order.clients.Customer;
 import com.ewolff.microservice.order.clients.CustomerClient;

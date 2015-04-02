@@ -26,9 +26,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.ewolff.microservice.customer.domain.Customer;
-import com.ewolff.microservice.customer.repository.CustomerRepository;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CustomerApp.class)
 @IntegrationTest

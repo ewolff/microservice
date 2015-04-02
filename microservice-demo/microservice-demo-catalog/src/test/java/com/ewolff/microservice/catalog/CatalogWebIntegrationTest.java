@@ -22,9 +22,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
-import com.ewolff.microservice.catalog.domain.Item;
-import com.ewolff.microservice.catalog.repository.ItemRepository;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CatalogApp.class)
 @IntegrationTest("server.port=0")

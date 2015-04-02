@@ -9,9 +9,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-import com.ewolff.microservice.customer.domain.Customer;
-import com.ewolff.microservice.customer.repository.CustomerRepository;
-
 @ComponentScan
 @EnableAutoConfiguration
 @EnableEurekaClient

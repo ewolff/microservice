@@ -1,4 +1,4 @@
-package com.ewolff.microservice.catalog.controller;
+package com.ewolff.microservice.catalog.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ewolff.microservice.catalog.domain.Item;
-import com.ewolff.microservice.catalog.repository.ItemRepository;
+import com.ewolff.microservice.catalog.Item;
+import com.ewolff.microservice.catalog.ItemRepository;
 
 @Controller
 public class CatalogController {

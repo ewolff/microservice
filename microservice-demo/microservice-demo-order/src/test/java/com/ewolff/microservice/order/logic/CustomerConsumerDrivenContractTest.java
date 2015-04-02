@@ -1,4 +1,4 @@
-package com.ewolff.microservice.order;
+package com.ewolff.microservice.order.logic;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.ewolff.microservice.order.OrderApp;
 import com.ewolff.microservice.order.clients.Customer;
 import com.ewolff.microservice.order.clients.CustomerClient;
 

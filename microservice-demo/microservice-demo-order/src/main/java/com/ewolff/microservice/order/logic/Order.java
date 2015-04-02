@@ -14,7 +14,7 @@ import com.ewolff.microservice.order.clients.CatalogClient;
 
 @Entity
 @Table(name = "ORDERTABLE")
-public class Order {
+class Order {
 
 	@Id
 	@GeneratedValue

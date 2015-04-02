@@ -1,4 +1,4 @@
-package com.ewolff.microservice.order.customermock;
+package com.ewolff.microservice.order.customerstub;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ import com.ewolff.microservice.order.clients.Customer;
 @RestController
 @RequestMapping("/customer")
 @Profile("test")
-public class CustomerMock {
+public class CustomerStub {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Customer> getById(@PathVariable("id") long id) {

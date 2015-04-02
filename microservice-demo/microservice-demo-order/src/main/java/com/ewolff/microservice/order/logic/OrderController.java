@@ -16,7 +16,7 @@ import com.ewolff.microservice.order.clients.CustomerClient;
 import com.ewolff.microservice.order.clients.Item;
 
 @Controller
-public class OrderController {
+class OrderController {
 
 	private OrderRepository orderRepository;
 

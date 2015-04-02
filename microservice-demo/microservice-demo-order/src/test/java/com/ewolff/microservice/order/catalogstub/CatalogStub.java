@@ -1,4 +1,4 @@
-package com.ewolff.microservice.order.catalogmock;
+package com.ewolff.microservice.order.catalogstub;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ import com.ewolff.microservice.order.clients.Item;
 @RestController
 @RequestMapping("/catalog")
 @Profile("test")
-public class CatalogMock {
+public class CatalogStub {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Item> getById(@PathVariable("id") long id) {

@@ -4,8 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
-import com.ewolff.microservice.catalog.domain.Item;
-
 @Configuration
 public class SpringRestDataConfig extends RepositoryRestMvcConfiguration {
 

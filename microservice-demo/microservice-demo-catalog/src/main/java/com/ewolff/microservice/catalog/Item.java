@@ -1,4 +1,4 @@
-package com.ewolff.microservice.catalog.domain;
+package com.ewolff.microservice.catalog;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
