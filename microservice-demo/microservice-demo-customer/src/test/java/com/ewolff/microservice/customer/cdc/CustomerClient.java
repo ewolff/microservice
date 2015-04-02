@@ -33,23 +33,16 @@ public class CustomerClient {
 
 	}
 
-	public CustomerClient() {
+	@Autowired
+	public CustomerClient(
+			@Value("${customer.service.host:customer}") String customerServiceHost,
+			@Value("${customer.service.port:8080}") long customerServicePort,
+			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon) {
+		super();
 		this.restTemplate = getRestTemplate();
-	}
-
-	@Value("${customer.service.host:customer}")
-	public void setCustomerServiceHost(String customerServiceHost) {
 		this.customerServiceHost = customerServiceHost;
-	}
-
-	@Value("${customer.service.port:8080}")
-	public void setCustomerServicePort(long customerServicePort) {
 		this.customerServicePort = customerServicePort;
-	}
-
-	@Value("${ribbon.eureka.enabled:false}")
-	public void setUseRibbon(boolean userRibbon) {
-		this.useRibbon = userRibbon;
+		this.useRibbon = useRibbon;
 	}
 
 	@Autowired(required = false)
@@ -94,7 +87,7 @@ public class CustomerClient {
 
 	private String customerURL() {
 		if (useRibbon) {
-			ServiceInstance instance = loadBalancer.choose("C");
+			ServiceInstance instance = loadBalancer.choose("CUSTOMER");
 			return "http://" + instance.getHost() + ":" + instance.getPort()
 					+ "/customer/";
 		} else {

@@ -34,23 +34,16 @@ public class CatalogClient {
 	private LoadBalancerClient loadBalancer;
 	private Collection<Item> itemsCache = null;
 
-	public CatalogClient() {
+	@Autowired
+	public CatalogClient(
+			@Value("${catalog.service.host:catalog}") String catalogServiceHost,
+			@Value("${catalog.service.port:8080}") long catalogServicePort,
+			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon) {
+		super();
 		this.restTemplate = getRestTemplate();
-	}
-
-	@Value("${catalog.service.host:catalog}")
-	public void setCatalogServiceHost(String itemServiceHost) {
-		this.catalogServiceHost = itemServiceHost;
-	}
-
-	@Value("${catalog.service.port:8080}")
-	public void setCatalogServicePort(long itemServicePort) {
-		this.catalogServicePort = itemServicePort;
-	}
-
-	@Value("${ribbon.eureka.enabled:false}")
-	public void setUseRibbon(boolean userRibbon) {
-		this.useRibbon = userRibbon;
+		this.catalogServiceHost = catalogServiceHost;
+		this.catalogServicePort = catalogServicePort;
+		this.useRibbon = useRibbon;
 	}
 
 	@Autowired(required = false)

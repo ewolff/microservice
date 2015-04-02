@@ -25,6 +25,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
+		<spring-hateoas.version>0.17.0.RELEASE</spring-hateoas.version>
 	</properties>
 
 	<build>
