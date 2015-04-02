@@ -1,7 +1,7 @@
 Micro Service Demo
 ==============
 
-[German / Deutsch](LIESMICH.md
+[German / Deutsch](LIESMICH.md)
 
 This project creates a VM with the complete micro service demo system
 in Docker containers inside a Vagrant VM. The services are implemented
