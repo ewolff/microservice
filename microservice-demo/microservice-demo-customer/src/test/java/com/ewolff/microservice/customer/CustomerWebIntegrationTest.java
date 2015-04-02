@@ -1,14 +1,10 @@
 package com.ewolff.microservice.customer;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.stream.StreamSupport;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -94,9 +90,9 @@ public class CustomerWebIntegrationTest {
 	@Test
 	public void IsCustomerListReturned() {
 
-		List<Customer> customers = customerRepository.findAll();
-		assertTrue(customers.stream().noneMatch(
-				c -> (c.getName().equals("Hoeller1"))));
+		Iterable<Customer> customers = customerRepository.findAll();
+		assertTrue(StreamSupport.stream(customers.spliterator(), false)
+				.noneMatch(c -> (c.getName().equals("Hoeller1"))));
 		ResponseEntity<String> resultEntity = restTemplate.getForEntity(
 				customerURL() + "/list.html", String.class);
 		assertTrue(resultEntity.getStatusCode().is2xxSuccessful());

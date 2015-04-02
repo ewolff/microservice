@@ -3,8 +3,8 @@ package com.ewolff.microservice.order.logic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ewolff.microservice.order.clients.CustomerClient;
 import com.ewolff.microservice.order.clients.CatalogClient;
+import com.ewolff.microservice.order.clients.CustomerClient;
 
 @Service
 public class OrderService {
@@ -33,7 +33,7 @@ public class OrderService {
 	}
 
 	public double getPrice(long orderId) {
-		return orderRepository.getOne(orderId).totalPrice(itemClient);
+		return orderRepository.findOne(orderId).totalPrice(itemClient);
 	}
 
 }

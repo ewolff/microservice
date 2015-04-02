@@ -3,7 +3,7 @@ package com.ewolff.microservice.order;
 import static org.junit.Assert.*;
 
 import java.net.URI;
-import java.util.List;
+import java.util.stream.StreamSupport;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -64,9 +64,11 @@ public class OrderWebIntegrationTest {
 	@Test
 	public void IsOrderListReturned() {
 		try {
-			List<Order> orders = orderRepository.findAll();
-			assertTrue(orders.stream().noneMatch(
-					o -> (o.getCustomerId() == customer.getCustomerId())));
+			Iterable<Order> orders = orderRepository.findAll();
+			assertTrue(StreamSupport
+					.stream(orders.spliterator(), false)
+					.noneMatch(
+							o -> (o.getCustomerId() == customer.getCustomerId())));
 			ResponseEntity<String> resultEntity = restTemplate.getForEntity(
 					orderURL(), String.class);
 			assertTrue(resultEntity.getStatusCode().is2xxSuccessful());
