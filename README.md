@@ -26,6 +26,8 @@ The technologies used:
 from multiple sources. However, this does not work at the moment.
 - Zuul is used to route HTTP requests from the outside to the
   different services.
+- Spring Cloud Config isn't used. It is disabled with
+  spring.cloud.config.enabled=false in the bootstrap files.
 
 
 To run:

@@ -24,7 +24,9 @@ Folgende Technologien sind in dem System verwendet worden:
   Hystrix-Daten aus mehreren Quellen zu kombinieren. Allerdings
   funktioniert das noch nicht. 
 - Zuul wird dazu genutzt, um HTTP-Requests von außen auf die
-  verschiedenen Dienste zu verteilen.
+verschiedenen Dienste zu verteilen.
+- Spring Cloud Config wurde nicht genutzt - daher
+  spring.cloud.config.enabled=false in den Bootstrap-Files.
 
 Zum Ausführen:
 
