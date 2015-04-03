@@ -11,30 +11,30 @@
 		<form th:action="${customer.id!=0} ? ${customer.id}+'.html' : 'add.html' " th:object="${customer}"
 			th:method="${customer.id != 0} ? put : post" role="form">
 			<div class="form-group">
-				<label for="inputName">Name</label> <input type="text"
+				<label >Name</label> <input type="text"
 					th:field="*{name}" class="form-control" placeholder="name" />
 			</div>
 
 			<div class="form-group">
-				<label for="inputName">Firstname</label> <input type="text"
+				<label >Firstname</label> <input type="text"
 					th:field="*{firstname}" class="form-control"
 					placeholder="firstname" />
 			</div>
 
 			<div class="form-group">
-				<label for="inputName">EMail</label> <input type="text"
+				<label >EMail</label> <input type="text"
 					th:field="*{email}" class="form-control"
 					placeholder="email" />
 			</div>
 
 			<div class="form-group">
-				<label for="inputName">Street</label> <input type="text"
+				<label >Street</label> <input type="text"
 					th:field="*{street}" class="form-control"
 					placeholder="street" />
 			</div>
 
 			<div class="form-group">
-				<label for="inputName">City</label> <input type="text"
+				<label >City</label> <input type="text"
 					th:field="*{city}" class="form-control"
 					placeholder="city" />
 			</div>

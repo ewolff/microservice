@@ -11,12 +11,12 @@
 		<form th:action="${item.id!=0} ? ${item.id}+'.html' : 'add.html' " th:object="${item}"
 			th:method="${item.id != 0} ? put : post" role="form">
 			<div class="form-group">
-				<label for="inputName">Name</label> <input type="text"
+				<label >Name</label> <input type="text"
 					th:field="*{name}" class="form-control" placeholder="name" />
 			</div>
 
 			<div class="form-group">
-				<label for="inputName">Price</label> <input type="text"
+				<label >Price</label> <input type="text"
 					th:field="*{price}" class="form-control"
 					placeholder="price" />
 			</div>
