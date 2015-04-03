@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 @Entity
 public class OrderLine {
 
@@ -42,31 +46,19 @@ public class OrderLine {
 	}
 
 	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+
+	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + count;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (int) (itemId ^ (itemId >>> 32));
-		return result;
+		return HashCodeBuilder.reflectionHashCode(this);
+
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderLine other = (OrderLine) obj;
-		if (count != other.count)
-			return false;
-		if (id != other.id)
-			return false;
-		if (itemId != other.itemId)
-			return false;
-		return true;
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 }

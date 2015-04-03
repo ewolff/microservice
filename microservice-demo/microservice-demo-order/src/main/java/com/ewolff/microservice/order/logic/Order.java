@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import com.ewolff.microservice.order.clients.CatalogClient;
 
 @Entity
@@ -72,11 +76,25 @@ class Order {
 		return orderLine.stream()
 				.map((ol) -> ol.getCount() * itemClient.price(ol.getItemId()))
 				.reduce(0.0, (d1, d2) -> d1 + d2);
-
 	}
 
 	public void setCustomer(long customerId) {
 		this.customerId = customerId;
 	}
 
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
 }
