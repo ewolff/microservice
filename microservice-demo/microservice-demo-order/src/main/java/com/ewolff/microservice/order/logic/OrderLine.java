@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-class OrderLine {
+public class OrderLine {
 
 	@Column(name = "F_COUNT")
 	private int count;
