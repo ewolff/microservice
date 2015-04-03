@@ -9,10 +9,11 @@ eureka:
     waitTimeInMsWhenSyncEmpty: 0
   instance:
     preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
     
 turbine:
   aggregator:
-      clusterConfig: ORDER
+    clusterConfig: ORDER
   appConfig: order
 
   

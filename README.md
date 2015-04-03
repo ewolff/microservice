@@ -47,11 +47,10 @@ The result should be:
 - You can access the Eureka dashboard at http://127.0.0.1:18761/
 - You can access the Turbine dashboard at
 http://127.0.0.1:18989/hystrix . The URL for the data stream is
-http://172.17.0.9:8989/turbine.stream - the IP-Adresse changes. Look
-it up in the Eureka dashboard for service turbine. Turbine doesn't
-work at the moment, see
-https://github.com/spring-cloud/spring-cloud-netflix/issues/292 . So
-you need t use the address http://172.17.0.9:8989/hystrix.stream  of
-the Order App. The IP address can be found in the Eureka dashboard.
+http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the IP-Adresse
+changes. Look it up in the Eureka dashboard for service turbine. You
+can also connect to a Hystrix stream of an order service.  You need t
+use the address http://172.17.0.9:8989/hystrix.stream of the Order
+App. The IP address can be found in the Eureka dashboard.
 
 

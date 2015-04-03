@@ -48,10 +48,9 @@ Das Ergebnis:
   Verfügung. Die URL dort lautet
   http://172.17.0.9:8989/turbine.stream - wobei die IP-Adresse sich
   ändert. Sie kann im Eureka-Dashboard für den Dienst turbine
-  ermittelt werden. Turbine funktioniert im Moment nicht
-  korrekt, siehe
-  https://github.com/spring-cloud/spring-cloud-netflix/issues/292. Daher
-  muss die Adresse  http://172.17.0.9:8989/hystrix.stream der Order
-  App genutzt werden - wobei die IP-Adresse sich aus dem Eureka
-  Dashboard entnehmen lässt.
+  ermittelt werden. Die Alternative ist der Hystrix Stream des Order
+  Services. Dazu muss die Adresse
+  http://172.17.0.9:8989/hystrix.stream der Order App genutzt werden -
+  wobei die IP-Adresse des Order Service sich aus dem Eureka Dashboard
+  entnehmen lässt.
 
