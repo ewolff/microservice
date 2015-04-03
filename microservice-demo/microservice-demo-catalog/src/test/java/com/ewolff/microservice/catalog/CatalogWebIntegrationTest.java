@@ -77,7 +77,7 @@ public class CatalogWebIntegrationTest {
 
 	@Test
 	public void SearchWorks() {
-		String url = catalogURL() + "/search.html?query=iPod";
+		String url = catalogURL() + "/searchByName.html?query=iPod";
 		String body = restTemplate.getForObject(url, String.class);
 
 		assertThat(body, containsString("iPod nano"));
