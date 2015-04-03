@@ -8,7 +8,7 @@
 <body>
 	<h1 layout:fragment="header">Item : Edit</h1>
 	<div layout:fragment="content" class="container">
-		<form th:action="${item.id!=0} ? ${item.id}+'.html' : 'add.html' " th:object="${item}"
+		<form th:action="${item.id!=0} ? ${item.id}+'.html' : 'form.html' " th:object="${item}"
 			th:method="${item.id != 0} ? put : post" role="form">
 			<div class="form-group">
 				<label >Name</label> <input type="text"

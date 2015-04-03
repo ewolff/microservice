@@ -111,7 +111,7 @@ public class CustomerWebIntegrationTest {
 	@Test
 	public void IsCustomerFormDisplayed() {
 		ResponseEntity<String> resultEntity = restTemplate.getForEntity(
-				customerURL() + "/add.html", String.class);
+				customerURL() + "/form.html", String.class);
 		assertTrue(resultEntity.getStatusCode().is2xxSuccessful());
 		assertTrue(resultEntity.getBody().contains("<form"));
 	}
@@ -127,7 +127,7 @@ public class CustomerWebIntegrationTest {
 		map.add("city", "Linz");
 		map.add("email", "springjuergen@twitter.com");
 
-		restTemplate.postForObject(customerURL() + "add.html", map,
+		restTemplate.postForObject(customerURL() + "form.html", map,
 				String.class);
 		assertEquals(1, customerRepository.findByName("Hoeller").size());
 	}

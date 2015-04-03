@@ -35,12 +35,12 @@ public class CustomerController {
 				customerRepository.findAll());
 	}
 
-	@RequestMapping(value = "/add.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/form.html", method = RequestMethod.GET)
 	public ModelAndView add() {
 		return new ModelAndView("customer", "customer", new Customer());
 	}
 
-	@RequestMapping(value = "/add.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/form.html", method = RequestMethod.POST)
 	public ModelAndView post(Customer customer, HttpServletRequest httpRequest) {
 		customer = customerRepository.save(customer);
 		return new ModelAndView("success");

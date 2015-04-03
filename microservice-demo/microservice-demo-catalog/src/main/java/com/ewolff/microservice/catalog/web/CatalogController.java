@@ -32,12 +32,12 @@ public class CatalogController {
 		return new ModelAndView("itemlist", "items", itemRepository.findAll());
 	}
 
-	@RequestMapping(value = "/add.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/form.html", method = RequestMethod.GET)
 	public ModelAndView add() {
 		return new ModelAndView("item", "item", new Item());
 	}
 
-	@RequestMapping(value = "/add.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/form.html", method = RequestMethod.POST)
 	public ModelAndView post(Item Item) {
 		Item = itemRepository.save(Item);
 		return new ModelAndView("success");
