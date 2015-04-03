@@ -52,10 +52,10 @@ public class CatalogController {
 
 	@RequestMapping(value = "/searchForm.html", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView searchForm() {
-		return new ModelAndView("search");
+		return new ModelAndView("searchForm");
 	}
 
-	@RequestMapping(value = "/search.html", produces = MediaType.TEXT_HTML_VALUE)
+	@RequestMapping(value = "/searchByName.html", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView search(@RequestParam("query") String query) {
 		return new ModelAndView("itemlist", "items",
 				itemRepository.findByNameContaining(query));
