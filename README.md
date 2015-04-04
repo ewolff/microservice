@@ -12,7 +12,9 @@ It uses three microservices:
 - Customer to handle customer data.
 - Catalog to handle the items in the catalog.
 
-The technologies used:
+Technologies
+------------
+
 - Eureka for Lookup
 - Ribbon for Load Balancing. See the classes CatalogClient and
   CustomerClient in com.ewolff.microservice.order.clients in the
@@ -30,7 +32,8 @@ from multiple sources. However, this does not work at the moment.
   spring.cloud.config.enabled=false in the bootstrap files.
 
 
-To run:
+How To Run
+----------
 
 - Install Vagrant as discussed at
   http://docs.vagrantup.com/v2/installation/index.html
@@ -53,7 +56,10 @@ can also connect to a Hystrix stream of an order service.  You need t
 use the address http://172.17.0.9:8989/hystrix.stream of the Order
 App. The IP address can be found in the Eureka dashboard.
 
-Some remarks on the code. The servers for the infrastruture are pretty simple thanks to Spring Cloud:
+Remarks on the Code
+-------------------
+
+The servers for the infrastruture are pretty simple thanks to Spring Cloud:
 
 - microservice-demo-eureka is the Eureka server for service discovery.
 - microservice-demo-zuul is the Zuul server. It distributes the requests to the three microservices.
