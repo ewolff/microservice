@@ -42,7 +42,6 @@ Das Ergebnis:
 - Eine VirtualBox VM wird von Vagrant gestartet
 - Docker wird in der VM gestartet
 - Die Anwendung steht unter http://127.0.0.1:18080/ zur Verfügung.
-- Das Monitoring der Anwendung steht unter http://127.0.0.1:18080/monitor/ zur Verfügung.
 - Das Eureka-Dashboard steht unter http://127.0.0.1:18761/ zur Verfügung.
 - Das Turbine-Dashboard steht unter http://127.0.0.1:18989/hystrix zur
   Verfügung. Die URL dort lautet
