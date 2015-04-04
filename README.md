@@ -53,4 +53,16 @@ can also connect to a Hystrix stream of an order service.  You need t
 use the address http://172.17.0.9:8989/hystrix.stream of the Order
 App. The IP address can be found in the Eureka dashboard.
 
+Some remarks on the code. The servers for the infrastruture are pretty simple thanks to Spring Cloud:
 
+- microservice-demo-eureka is the Eureka server for service discovery.
+- microservice-demo-zuul is the Zuul server. It distributes the requests to the three microservices.
+- microservice-demo-turbine can be used to consolidate the Hystrix metrics and has a Hystrix dashboard.
+
+The microservices are: 
+- microservice-demo-catalog is the application to take care of items.
+- microserivce-demo-customer is responsible for customers.
+- microservice-demo-order does order processing. It uses microservice-demo-catalog and microservice-demo-customer. Ribbon is used for load balancing and Hystrix for resilience.
+
+
+The microservices have an Java main application in src/test/java to run them stand alone. microservice-demo-order uses a stub for the other services then. Also there are tests that use customer driven contracts. That wy it is ensured that the services provide the correct interface. These CDC tests are used in microservice-demo-order to verify the stubs. In microserivce-demo-customer and microserivce-demo-catalog they are used to verify the implemented REST services.
