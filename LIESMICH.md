@@ -1,5 +1,5 @@
 Micro Service Demo
-==============
+==================
 
 Dieses Projekt erzeugt eine VM mit der vollständigen Micro-Service-Demo in 
 Docker-Containern. Die Services sind mit Java, Spring und Spring Cloud
@@ -10,8 +10,10 @@ Das System hat drei Microservices:
 - Customer für Kundendaten
 - Catalog für die Waren
 
-Folgende Technologien sind in dem System verwendet worden:
-- Eureka für Discovery
+Technologien
+------------
+
+- Eureka für Service Discovery
 - Ribbon für Load Balancing. Siehe die Klassen CatalogClient und
   CustomerClient in com.ewolff.microservice.order.clients im Projekt
   microservice-demo-order .
@@ -28,7 +30,9 @@ verschiedenen Dienste zu verteilen.
 - Spring Cloud Config wurde nicht genutzt - daher
   spring.cloud.config.enabled=false in den Bootstrap-Files.
 
-Zum Ausführen:
+
+Ausführen
+---------
 
 - Installiere Vagrant, siehe
   http://docs.vagrantup.com/v2/installation/index.html
@@ -53,3 +57,19 @@ Das Ergebnis:
   wobei die IP-Adresse des Order Service sich aus dem Eureka Dashboard
   entnehmen lässt.
 
+
+Hinweise zum Code
+-----------------
+
+Die Server für die Infrastruktur sind recht einfach - dank Spring Cloud:
+
+- microservice-demo-eureka ist der Eureka-Server für Service Discovery.
+- microservice-demo-zuul implementiert den Zuul-Server. Er verteilt die eingehenden Anfragen auf die drei Microservices.
+- microservice-demo-turbine kann zum Konsolidieren der Hystrix-Metriken genutzt werden und bietet auerdem ein Hystrix-Dashboard an.
+
+Die microservices sind: 
+- microservice-demo-catalog verwaltet die verschiedenen Waren.
+- microserivce-demo-customer ist für die Kunden zuständig
+- microservice-demo-order implementiert die Bearbeitung der Bestellungen. Der Microservice nutzt microservice-demo-catalog und microservice-demo-customer. Der Service nutzt Ribbon für Load Balancing und Hystrix für Resilience.
+
+Die Microservices haben ein Java-Hauptprogramm im src/test/java, um die Services einzeln zu betreiben - also ohne Eureka oder die anderen Services. Dann werden die anderen Services durch Stubs simuliert. Außerdem gibt es Tests, die Customer Driven Contract verwenden. Damit wird sichergestellt, dass die anderen Services die Schnittstellen korrekt implementieren. Außerdem werden die CDC-Tests in microserice-demo-order genutzt, um die Stubs zu überprüfen. In microserivce-demo-customer und microserivce-demo-catalog werden sie genutzt, um die korrekte Implementierung der REST-Services abzusichern.
