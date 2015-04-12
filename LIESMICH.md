@@ -53,7 +53,7 @@ Das Ergebnis:
   ändert. Sie kann im Eureka-Dashboard für den Dienst turbine
   ermittelt werden. Die Alternative ist der Hystrix Stream des Order
   Services. Dazu muss die Adresse
-  http://172.17.0.9:8989/hystrix.stream der Order App genutzt werden -
+  http://172.17.0.10:8989/turbine.stream?cluster=ORDER der Order App genutzt werden -
   wobei die IP-Adresse des Order Service sich aus dem Eureka Dashboard
   entnehmen lässt.
 
