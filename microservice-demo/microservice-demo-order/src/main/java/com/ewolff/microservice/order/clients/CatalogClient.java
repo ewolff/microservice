@@ -3,6 +3,8 @@ package com.ewolff.microservice.order.clients;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -22,6 +24,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Component
 public class CatalogClient {
+
+	private final Logger log = LoggerFactory.getLogger(CatalogClient.class);
 
 	public static class ItemPagedResources extends PagedResources<Item> {
 
@@ -88,14 +92,17 @@ public class CatalogClient {
 	}
 
 	private String catalogURL() {
+		String url;
 		if (useRibbon) {
 			ServiceInstance instance = loadBalancer.choose("CATALOG");
-			return "http://" + instance.getHost() + ":" + instance.getPort()
+			url = "http://" + instance.getHost() + ":" + instance.getPort()
 					+ "/catalog/";
 		} else {
-			return "http://" + catalogServiceHost + ":" + catalogServicePort
+			url = "http://" + catalogServiceHost + ":" + catalogServicePort
 					+ "/catalog/";
 		}
+		log.trace("Catalog: URL {} ", url);
+		return url;
 	}
 
 	@HystrixCommand(fallbackMethod = "getOneCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })

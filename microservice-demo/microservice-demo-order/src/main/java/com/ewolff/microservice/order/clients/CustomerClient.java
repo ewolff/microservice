@@ -3,6 +3,8 @@ package com.ewolff.microservice.order.clients;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -22,6 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class CustomerClient {
+
+	private final Logger log = LoggerFactory.getLogger(CatalogClient.class);
 
 	private RestTemplate restTemplate;
 	private String customerServiceHost;
@@ -86,14 +90,18 @@ public class CustomerClient {
 	}
 
 	private String customerURL() {
+		String url;
 		if (useRibbon) {
 			ServiceInstance instance = loadBalancer.choose("CUSTOMER");
-			return "http://" + instance.getHost() + ":" + instance.getPort()
+			url = "http://" + instance.getHost() + ":" + instance.getPort()
 					+ "/customer/";
+
 		} else {
-			return "http://" + customerServiceHost + ":" + customerServicePort
+			url = "http://" + customerServiceHost + ":" + customerServicePort
 					+ "/customer/";
 		}
+		log.trace("Customer: URL {} ", url);
+		return url;
 
 	}
 
