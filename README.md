@@ -35,7 +35,7 @@ from multiple sources. However, this does not work at the moment.
 How To Run
 ----------
 
-- Install Maven, see http://maven.apache.org/
+- Install Maven, see https://maven.apache.org/download.cgi
 - Install Vagrant as discussed at
   http://docs.vagrantup.com/v2/installation/index.html
 - Install Virtual Box from https://www.virtualbox.org/wiki/Downloads

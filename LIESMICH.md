@@ -34,7 +34,7 @@ verschiedenen Dienste zu verteilen.
 Ausführen
 ---------
 
-- Installiere Maven, siehe http://maven.apache.org/
+- Installiere Maven, siehe https://maven.apache.org/download.cgi
 - Installiere Vagrant, siehe
   http://docs.vagrantup.com/v2/installation/index.html
 - Installiere Virtual Box von https://www.virtualbox.org/wiki/Downloads
