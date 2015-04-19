@@ -50,7 +50,8 @@ The result should be:
 - You can access the application at http://127.0.0.1:18080/
 - You can access the Eureka dashboard at http://127.0.0.1:18761/
 - You can access the Turbine dashboard at
-http://127.0.0.1:18989/hystrix . The URL for the data stream is
+http://127.0.0.1:18989/hystrix . The URL for the data stream of all
+Hystrix data of all Order nodes is
 http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the IP-Adresse
 changes. Look it up in the Eureka dashboard for service turbine. You
 can also connect to a Hystrix stream of an order service.  You need t

@@ -48,14 +48,14 @@ Das Ergebnis:
 - Docker wird in der VM gestartet
 - Die Anwendung steht unter http://127.0.0.1:18080/ zur Verfügung.
 - Das Eureka-Dashboard steht unter http://127.0.0.1:18761/ zur Verfügung.
-- Das Turbine-Dashboard steht unter http://127.0.0.1:18989/hystrix zur
-  Verfügung. Die URL dort lautet
-  http://172.17.0.9:8989/turbine.stream - wobei die IP-Adresse sich
-  ändert. Sie kann im Eureka-Dashboard für den Dienst turbine
-  ermittelt werden. Die Alternative ist der Hystrix Stream des Order
-  Services. Dazu muss die Adresse
+- Das Hystrix-Dashboard steht unter http://127.0.0.1:18989/hystrix zur
+  Verfügung. Die URL für einen einzelnen Order-Server dort lautet
+  http://172.17.0.9:8989/hystrix.stream - wobei die IP-Adresse sich
+  ändert. Sie kann im Eureka-Dashboard für den Dienst order-app
+  ermittelt werden. Die Alternative ist der Turbine Stream des Order
+  Services. Er enthält die Daten aller Order-Servives. Dazu muss die Adresse
   http://172.17.0.10:8989/turbine.stream?cluster=ORDER der Order App genutzt werden -
-  wobei die IP-Adresse des Order Service sich aus dem Eureka Dashboard
+  wobei die IP-Adresse des Turbine Service sich aus dem Eureka Dashboard
   entnehmen lässt.
 
 
