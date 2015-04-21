@@ -57,7 +57,7 @@ class OrderController {
 		return new ModelAndView("orderForm", "order", new Order());
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.POST, params = { "addLine" })
+	@RequestMapping(value = "/line", method = RequestMethod.POST)
 	public ModelAndView addLine(Order order) {
 		order.addLine(0, catalogClient.findAll().iterator().next().getItemId());
 		return new ModelAndView("orderForm", "order", order);
@@ -68,7 +68,7 @@ class OrderController {
 		return new ModelAndView("order", "order", orderRepository.findOne(id));
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.POST, params = { "submit" })
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView post(Order order) {
 		order = orderService.order(order);
 		return new ModelAndView("success");
