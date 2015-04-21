@@ -52,8 +52,8 @@ class OrderController {
 				orderRepository.findAll());
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public ModelAndView add() {
+	@RequestMapping(value = "/form", method = RequestMethod.GET)
+	public ModelAndView form() {
 		return new ModelAndView("orderForm", "order", new Order());
 	}
 
