@@ -1,5 +1,6 @@
 package com.ewolff.microservice.order.clients;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -9,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.hal.Jackson2HalModule;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
@@ -62,8 +63,7 @@ public class CatalogClient {
 		mapper.registerModule(new Jackson2HalModule());
 
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setSupportedMediaTypes(MediaType
-				.parseMediaTypes("application/hal+json"));
+		converter.setSupportedMediaTypes(Arrays.asList(MediaTypes.HAL_JSON));
 		converter.setObjectMapper(mapper);
 
 		return new RestTemplate(
