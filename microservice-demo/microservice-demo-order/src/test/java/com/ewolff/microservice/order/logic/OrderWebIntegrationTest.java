@@ -92,7 +92,7 @@ public class OrderWebIntegrationTest {
 	@Test
 	public void IsOrderFormDisplayed() {
 		ResponseEntity<String> resultEntity = restTemplate.getForEntity(
-				orderURL() + "/add", String.class);
+				orderURL() + "/form", String.class);
 		assertTrue(resultEntity.getStatusCode().is2xxSuccessful());
 		assertTrue(resultEntity.getBody().contains("<form"));
 	}
