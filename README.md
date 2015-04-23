@@ -1,5 +1,5 @@
-Micro Service Demo
-==============
+Microservice Demo
+=============
 
 [German / Deutsch](LIESMICH.md)
 

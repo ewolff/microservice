@@ -1,7 +1,7 @@
-Micro Service Demo
+Microservice Demo
 ==================
 
-Dieses Projekt erzeugt eine VM mit der vollständigen Micro-Service-Demo in 
+Dieses Projekt erzeugt eine VM mit der vollständigen Microservice-Demo in 
 Docker-Containern. Die Services sind mit Java, Spring und Spring Cloud
 implementiert.
 
