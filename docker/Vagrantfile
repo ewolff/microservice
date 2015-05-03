@@ -19,7 +19,8 @@ Vagrant.configure("2") do |config|
     d.build_image "--tag=order-app /vagrant/order-app"
     d.build_image "--tag=turbine /vagrant/turbine"
     d.build_image "--tag=zuul /vagrant/zuul"
-    
+  end    
+  config.vm.provision "docker", run: "always" do |d|
     d.run "eureka",
       args: "-p 8761:8761 -v /microservice-demo:/microservice-demo"
     d.run "customer-app",
