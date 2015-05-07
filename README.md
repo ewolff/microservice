@@ -42,6 +42,10 @@ How To Run
 - Go to directory `microservice-demo` and run `mvn install` there
 - Change to the directory `docker` and run `vagrant
    up`
+- After `vagrant halt` and `vagrant up`the Docker containers won't be
+  started. You can either run the containers manually at the shell
+  with `vagrant ssh` or do a new provisioning using `vagrant
+  provision` . Then the containers will be rebuild.
 
 The result should be:
 

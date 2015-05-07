@@ -41,6 +41,11 @@ Ausführen
 - Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn install` aus
 - Wechsel zum Verzeichnis `docker` und führe `vagrant
    up` aus.
+- Nach einem `vagrant halt`werden die Docker container nicht neu
+  gestartet. Entweder kann man die container mit einem `vagrant ssh`in
+  der shell der Box direkt starten oder mit `vagrant provision`die
+  Provisionierung erneut starten. Dann werden die Docker container
+  aber gegebenenfalls ebenfalls neu gebaut.
 
 Das Ergebnis:
 
