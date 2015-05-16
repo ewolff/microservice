@@ -41,11 +41,10 @@ How To Run
 - Install Virtual Box from https://www.virtualbox.org/wiki/Downloads
 - Go to directory `microservice-demo` and run `mvn install` there
 - Change to the directory `docker` and run `vagrant
-   up`
-- After `vagrant halt` and `vagrant up`the Docker containers won't be
-  started. You can either run the containers manually at the shell
-  with `vagrant ssh` or do a new provisioning using `vagrant
-  provision` . Then the containers will be rebuild.
+   up`. Each time you start the Vagrant VM the Docker containers will be started, too.
+- Use `vagrant halt` to shut down the system or `vagrant destroy` to
+  to delete the VM. Login to the VM using `vagrant ssh`. Do a new
+  provisioning using `vagrant provision` . Then the containers will be rebuild.
 
 The result should be:
 
