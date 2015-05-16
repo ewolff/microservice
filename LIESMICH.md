@@ -40,12 +40,11 @@ Ausführen
 - Installiere Virtual Box von https://www.virtualbox.org/wiki/Downloads
 - Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn install` aus
 - Wechsel zum Verzeichnis `docker` und führe `vagrant
-   up` aus.
-- Nach einem `vagrant halt`werden die Docker container nicht neu
-  gestartet. Entweder kann man die container mit einem `vagrant ssh`in
-  der shell der Box direkt starten oder mit `vagrant provision`die
-  Provisionierung erneut starten. Dann werden die Docker container
-  aber gegebenenfalls ebenfalls neu gebaut.
+   up` aus. Beim jedem Start der Vagrant VM werden die Docker Container mitgestartet.
+- Mit `vagrant halt` kann die Vagrnat VM beendet werden. `vagrant destroy` löscht
+  alle Dateien der VM. Mit `vagrant ssh` kann man sich in die VM einloggen und mit
+ `vagrant provision` die Provisionierung erneut starten. Dann werden die Docker container
+  neu gebaut.
 
 Das Ergebnis:
 
