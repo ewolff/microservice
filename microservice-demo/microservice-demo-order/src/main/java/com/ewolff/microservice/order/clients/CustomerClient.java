@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class CustomerClient {
 
-	private final Logger log = LoggerFactory.getLogger(CatalogClient.class);
+	private final Logger log = LoggerFactory.getLogger(CustomerClient.class);
 
 	private RestTemplate restTemplate;
 	private String customerServiceHost;
