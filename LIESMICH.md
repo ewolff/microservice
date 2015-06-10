@@ -54,7 +54,7 @@ Das Ergebnis:
 - Das Eureka-Dashboard steht unter http://127.0.0.1:18761/ zur Verfügung.
 - Das Hystrix-Dashboard steht unter http://127.0.0.1:18989/hystrix zur
   Verfügung. Die URL für einen einzelnen Order-Server dort lautet
-  http://172.17.0.9:8989/hystrix.stream - wobei die IP-Adresse sich
+  http://172.17.0.9:8080/hystrix.stream - wobei die IP-Adresse sich
   ändert. Sie kann im Eureka-Dashboard für den Dienst order-app
   ermittelt werden. Die Alternative ist der Turbine Stream des Order
   Services. Er enthält die Daten aller Order-Servives. Dazu muss die Adresse
