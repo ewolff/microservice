@@ -1,12 +1,12 @@
 Microservice Demo
 ==================
 
-Dieses Projekt erzeugt eine VM mit der vollständigen Microservice-Demo in 
+Dieses Projekt erzeugt eine vollständigen Microservice-Demo in 
 Docker-Containern. Die Services sind mit Java, Spring und Spring Cloud
 implementiert.
 
 Das System hat drei Microservices:
-- Order um Bestellungen handzuhaben
+- Order um Bestellungen entgegenzunehmen
 - Customer für Kundendaten
 - Catalog für die Waren
 
@@ -34,34 +34,8 @@ verschiedenen Dienste zu verteilen.
 Ausführen
 ---------
 
-- Installiere Maven, siehe https://maven.apache.org/download.cgi
-- Installiere Vagrant, siehe
-  http://docs.vagrantup.com/v2/installation/index.html
-- Installiere Virtual Box von https://www.virtualbox.org/wiki/Downloads
-- Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn install` aus
-- Wechsel zum Verzeichnis `docker` und führe `vagrant
-   up` aus. Beim jedem Start der Vagrant VM werden die Docker Container mitgestartet.
-- Mit `vagrant halt` kann die Vagrnat VM beendet werden. `vagrant destroy` löscht
-  alle Dateien der VM. Mit `vagrant ssh` kann man sich in die VM einloggen und mit
- `vagrant provision` die Provisionierung erneut starten. Dann werden die Docker container
-  neu gebaut.
-
-Das Ergebnis:
-
-- Eine VirtualBox VM wird von Vagrant gestartet
-- Docker wird in der VM gestartet
-- Die Anwendung steht unter http://127.0.0.1:18080/ zur Verfügung.
-- Das Eureka-Dashboard steht unter http://127.0.0.1:18761/ zur Verfügung.
-- Das Hystrix-Dashboard steht unter http://127.0.0.1:18989/hystrix zur
-  Verfügung. Die URL für einen einzelnen Order-Server dort lautet
-  http://172.17.0.9:8080/hystrix.stream - wobei die IP-Adresse sich
-  ändert. Sie kann im Eureka-Dashboard für den Dienst order-app
-  ermittelt werden. Die Alternative ist der Turbine Stream des Order
-  Services. Er enthält die Daten aller Order-Servives. Dazu muss die Adresse
-  http://172.17.0.10:8989/turbine.stream?cluster=ORDER der Order App genutzt werden -
-  wobei die IP-Adresse des Turbine Service sich aus dem Eureka Dashboard
-  entnehmen lässt.
-
+Das Beispiel kann entweder mit [Vagrant](docker-vagrant/LIESMICH.md) betrieben werden - oder mit [Docker Machine und Docker
+Compose](docker/LIESMICH.md).
 
 Hinweise zum Code
 -----------------
