@@ -29,7 +29,7 @@ https://docs.docker.com/compose/#installation-and-set-up
 Das Ergebnis:
 
 - Docker Compose erzeugt die Docker Images und startet sie.
-- Find mit `docker-machine ls`die IP address der vrituellen Maschine
+- Find mit `docker-machine ip dev`die IP address der vrituellen Maschine
 - Eine VirtualBox VM wird von Vagrant gestartet
 - Docker wird in der VM gestartet
 - Die Anwendung steht unter http://ipadresss:8080/ zur

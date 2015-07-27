@@ -6,29 +6,38 @@ supports Virtual Box but also many other technologies including
 several clouds. Docker Compose create all the Docker containers needed
 fot the systems.
 
+To run the demo:
+
 - Install Maven, see https://maven.apache.org/download.cgi
-- Install Vagrant as discussed at
-  http://docs.vagrantup.com/v2/installation/index.html
 - Install Virtual Box from https://www.virtualbox.org/wiki/Downloads
+- Install Docker Compose, see
+https://docs.docker.com/compose/#installation-and-set-up 
+- Install Docker Machine, see https://docs.docker.com/machine/#installation
 - Go to directory `microservice-demo` and run `mvn install` there
-- Change to the directory `docker` and run `vagrant
-   up`. Each time you start the Vagrant VM the Docker containers will be started, too.
-- Use `vagrant halt` to shut down the system or `vagrant destroy` to
-  to delete the VM. Login to the VM using `vagrant ssh`. Do a new
-  provisioning using `vagrant provision` . Then the containers will be rebuild.
+- Execute `docker-machine create  --virtualbox-memory "4096" --driver
+  virtualbox dev` . This will create a new environment called `dev`with Docker
+  Machine. It will be virtual machine in Virtual Box with 4GB RAM.
+  - Execute `eval "$(docker-machine env dev)"` (Linux / Mac OS X) or
+    `docker-machine.exe env --shell powershell dev` (Windows,
+    Powershell) /  `docker-machine.exe env --shell cmd dev` (Windows,
+    cmd.exe). Now the docker tool will use the newly created virtual
+    machine as environment.
+- Change to the directory `docker` and run `docker-compose
+   build`followed by `docker-compose up`. 
+
 
 The result should be:
 
-- A new VirtualBox VM is fired up by Vagrant
-- Docker is installed in the VM
-- You can access the application at http://127.0.0.1:18080/ . It has a
+- Docker Compose builds the Docker images and runs them.
+- Use `docker-machine ip dev`to find the IP adress of the virtual machine.
+- You can access the application at http://ipadresss:8080/ . It has a
   web page with links to all other services.
-- You can access the Eureka dashboard at http://127.0.0.1:18761/
-- You can access the Turbine dashboard at
-http://127.0.0.1:18080/turbine/hystrix . The URL for the data stream of all
-Hystrix data of all Order nodes is
-http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the IP-Adresse
-changes. Look it up in the Eureka dashboard for service turbine. You
-can also connect to a Hystrix stream of an order service.  You need to
-use the address http://172.17.0.9:8080/hystrix.stream of the Order
-App. The IP address can be found in the Eureka dashboard.
+- You can access the Turbine dashboard by follwing the link on the
+page. The URL for the data stream of all Hystrix data of all Order
+nodes is http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the
+IP-Adresse changes. Look it up in the Eureka dashboard for service
+turbine. You can also connect to a Hystrix stream of an order service.
+You need to use the address http://172.17.0.9:8080/hystrix.stream of
+the Order App. The IP address can be found in the Eureka dashboard.
+
+- Use `docker-machine rm dev` to destroy the virtual machine.
