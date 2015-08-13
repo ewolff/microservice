@@ -11,7 +11,8 @@ To run the demo:
 - Install Maven, see https://maven.apache.org/download.cgi
 - Install Virtual Box from https://www.virtualbox.org/wiki/Downloads
 - Install Docker Compose, see
-https://docs.docker.com/compose/#installation-and-set-up 
+https://docs.docker.com/compose/#installation-and-set-up
+- Install Docker, see https://docs.docker.com/installation/
 - Install Docker Machine, see https://docs.docker.com/machine/#installation
 - Go to directory `microservice-demo` and run `mvn package` there
 - Execute `docker-machine create  --virtualbox-memory "4096" --driver
