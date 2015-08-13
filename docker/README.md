@@ -13,7 +13,7 @@ To run the demo:
 - Install Docker Compose, see
 https://docs.docker.com/compose/#installation-and-set-up 
 - Install Docker Machine, see https://docs.docker.com/machine/#installation
-- Go to directory `microservice-demo` and run `mvn install` there
+- Go to directory `microservice-demo` and run `mvn package` there
 - Execute `docker-machine create  --virtualbox-memory "4096" --driver
   virtualbox dev` . This will create a new environment called `dev`with Docker
   Machine. It will be virtual machine in Virtual Box with 4GB RAM.
@@ -29,7 +29,7 @@ https://docs.docker.com/compose/#installation-and-set-up
 The result should be:
 
 - Docker Compose builds the Docker images and runs them.
-- Use `docker-machine ip dev`to find the IP adress of the virtual machine.
+- Use `docker-machine ip dev` to find the IP adress of the virtual machine.
 - You can access the application at http://ipadresss:8080/ . It has a
   web page with links to all other services.
 - You can access the Turbine dashboard by follwing the link on the

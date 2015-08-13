@@ -11,7 +11,7 @@ Um das Beispiel ablaufen zu lassen:
 - Installiere Vagrant, siehe
   http://docs.vagrantup.com/v2/installation/index.html
 - Installiere Virtual Box von https://www.virtualbox.org/wiki/Downloads
-- Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn install` aus
+- Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn package` aus
 - Wechsel zum Verzeichnis `docker-vagrant` und führe `vagrant
    up` aus. Beim jedem Start der Vagrant VM werden die Docker Container mitgestartet.
 - Mit `vagrant halt` kann die Vagrnat VM beendet werden. `vagrant destroy` löscht

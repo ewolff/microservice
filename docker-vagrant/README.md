@@ -11,7 +11,7 @@ To run the demo:
 - Install Virtual Box from https://www.virtualbox.org/wiki/Downloads
 - Install Vagrant as discussed at
   http://docs.vagrantup.com/v2/installation/index.html
-- Go to directory `microservice-demo` and run `mvn install` there
+- Go to directory `microservice-demo` and run `mvn package` there
 - Change to the directory `docker-vagrant` and run `vagrant
    up`. Each time you start the Vagrant VM the Docker containers will be started, too.
 - Use `vagrant halt` to shut down the system or `vagrant destroy` to

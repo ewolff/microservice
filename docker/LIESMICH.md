@@ -11,7 +11,7 @@ Um das Beispiel ablaufen zu lassen:
 https://docs.docker.com/compose/#installation-and-set-up
 - Installiere Docker Machine, siehe https://docs.docker.com/machine/#installation
 - Installiere Virtual Box von https://www.virtualbox.org/wiki/Downloads
-- Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn install` aus
+- Gehe zum Verzeichnis `microservice-demo`  und führe dort `mvn package` aus
 - Führe `docker-machine create  --virtualbox-memory "4096" --driver
   virtualbox dev` aus. Das erzeugt eine neue Umgebung names`dev`mit Docker
   Machine. Es wird eine virtuelle Machine in Virtual Box mit 4GB RAM sein.
