@@ -19,10 +19,6 @@ https://docs.docker.com/compose/#installation-and-set-up
     `docker-machine.exe env --shell powershell dev` (Windows,
     Powershell) /  `docker-machine.exe env --shell cmd dev` (Windows,
     cmd.exe) aus. Das docker Kommando nutzt nun die neue virtuelle Maschine als Umgebung.
-- Mit `vagrant halt` kann die Vagrnat VM beendet werden. `vagrant destroy` löscht
-  alle Dateien der VM. Mit `vagrant ssh` kann man sich in die VM einloggen und mit
- `vagrant provision` die Provisionierung erneut starten. Dann werden die Docker container
- neu gebaut.
  - Führe im Verzeichnis `docker` das Kommando `docker-compose
    build` aus und dann `docker-compose up`. 
 
