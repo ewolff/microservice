@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Microservice by ewolff</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Microservice</h1>
+        <p>Demo for a Microservice setup. Based in Docker / Vagrant / Spring Cloud / Netflix / Java</p>
+
+        <p class="view"><a href="https://github.com/ewolff/microservice">View the Project on GitHub <small>ewolff/microservice</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ewolff/microservice/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ewolff/microservice/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ewolff/microservice">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="microservice-demo" class="anchor" href="#microservice-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Microservice Demo</h1>
+
+<p><a href="LIESMICH.md">German / Deutsch</a></p>
+
+<p>This project creates a VM with the complete micro service demo system
+in Docker containers inside a Vagrant VM. The services are implemented
+in Java using Spring and Spring Cloud.</p>
+
+<p>It uses three microservices:</p>
+
+<ul>
+<li>Order to process orders.</li>
+<li>Customer to handle customer data.</li>
+<li>Catalog to handle the items in the catalog.</li>
+</ul>
+
+<h2>
+<a id="technologies" class="anchor" href="#technologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies</h2>
+
+<ul>
+<li>Eureka for Lookup</li>
+<li>Ribbon for Load Balancing. See the classes CatalogClient and
+CustomerClient in com.ewolff.microservice.order.clients in the
+microservice-demo-order project.</li>
+<li>Hystrix is used for resilience. See CatalogClient in
+com.ewolff.microservice.order.clients in the microservice-demo-order
+project . Note that the CustomerClient won't use Hystrix. This way
+you can see how a crash of the Customer microservices makes the
+Order microservice useless.</li>
+<li>Hystrix has a dashboard. Turbine can be used to combine the data
+from multiple sources. However, this does not work at the moment.</li>
+<li>Zuul is used to route HTTP requests from the outside to the
+different services.</li>
+<li>Spring Cloud Config isn't used. It is disabled with
+spring.cloud.config.enabled=false in the bootstrap files.</li>
+</ul>
+
+<h2>
+<a id="how-to-run" class="anchor" href="#how-to-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To Run</h2>
+
+<p>The demo can be run with <a href="docker-vagrant/README.md">Vagrant</a> or <a href="docker/README.md">Docker Machine and Docker
+Compose</a>.</p>
+
+<h2>
+<a id="remarks-on-the-code" class="anchor" href="#remarks-on-the-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remarks on the Code</h2>
+
+<p>The servers for the infrastruture are pretty simple thanks to Spring Cloud:</p>
+
+<ul>
+<li>microservice-demo-eureka is the Eureka server for service discovery.</li>
+<li>microservice-demo-zuul is the Zuul server. It distributes the requests to the three microservices.</li>
+<li>microservice-demo-turbine can be used to consolidate the Hystrix metrics and has a Hystrix dashboard.</li>
+</ul>
+
+<p>The microservices are: </p>
+
+<ul>
+<li>microservice-demo-catalog is the application to take care of items.</li>
+<li>microserivce-demo-customer is responsible for customers.</li>
+<li>microservice-demo-order does order processing. It uses microservice-demo-catalog and microservice-demo-customer. Ribbon is used for load balancing and Hystrix for resilience.</li>
+</ul>
+
+<p>The microservices have an Java main application in src/test/java to run them stand alone. microservice-demo-order uses a stub for the other services then. Also there are tests that use customer driven contracts. That wy it is ensured that the services provide the correct interface. These CDC tests are used in microservice-demo-order to verify the stubs. In microserivce-demo-customer and microserivce-demo-catalog they are used to verify the implemented REST services.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ewolff">ewolff</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
