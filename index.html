@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Microservice by ewolff</title>
+    <meta name="description" content="Microservice : Demo for a Microservice setup. Based in Docker / Vagrant / Spring Cloud / Netflix / Java">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Microservice</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Microservice</h1>
-        <p>Demo for a Microservice setup. Based in Docker / Vagrant / Spring Cloud / Netflix / Java</p>
 
-        <p class="view"><a href="https://github.com/ewolff/microservice">View the Project on GitHub <small>ewolff/microservice</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ewolff/microservice">View on GitHub</a>
 
+          <h1 id="project_title">Microservice</h1>
+          <h2 id="project_tagline">Demo for a Microservice setup. Based in Docker / Vagrant / Spring Cloud / Netflix / Java</h2>
 
-        <ul>
-          <li><a href="https://github.com/ewolff/microservice/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/ewolff/microservice/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/ewolff/microservice">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ewolff/microservice/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ewolff/microservice/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a id="microservice-demo" class="anchor" href="#microservice-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Microservice Demo</h1>
 
@@ -93,12 +96,17 @@ Compose</a>.</p>
 
 <p>The microservices have an Java main application in src/test/java to run them stand alone. microservice-demo-order uses a stub for the other services then. Also there are tests that use customer driven contracts. That wy it is ensured that the services provide the correct interface. These CDC tests are used in microservice-demo-order to verify the stubs. In microserivce-demo-customer and microserivce-demo-catalog they are used to verify the implemented REST services.</p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/ewolff">ewolff</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Microservice maintained by <a href="https://github.com/ewolff">ewolff</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
