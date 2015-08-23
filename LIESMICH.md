@@ -5,6 +5,8 @@ Dieses Projekt erzeugt eine vollständigen Microservice-Demo in
 Docker-Containern. Die Services sind mit Java, Spring und Spring Cloud
 implementiert.
 
+Es ist eine Demo für das [Microservices Buch](http://microservices-buch.de/).
+
 Das System hat drei Microservices:
 - Order um Bestellungen entgegenzunehmen
 - Customer für Kundendaten

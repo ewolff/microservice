@@ -7,6 +7,8 @@ This project creates a VM with the complete micro service demo system
 in Docker containers inside a Vagrant VM. The services are implemented
 in Java using Spring and Spring Cloud.
 
+It's a demo for my [German Microservices Book](http://microservices-buch.de/)
+
 It uses three microservices:
 - Order to process orders.
 - Customer to handle customer data.
