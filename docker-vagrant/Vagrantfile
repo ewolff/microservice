@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "../microservice-demo", "/microservice-demo", create: true
   config.vm.network "forwarded_port", guest: 8080, host: 18080
   config.vm.network "forwarded_port", guest: 8761, host: 18761
-
+  config.vm.network "forwarded_port", guest: 8989, host: 18989
   config.vm.provider "virtualbox" do |v|
     v.memory = 3000
     v.cpus = 2
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     d.run "zuul",
       args: "-p 8080:8080 -v /microservice-demo:/microservice-demo --link eureka:eureka"
     d.run "turbine",
-      args: "-v /microservice-demo:/microservice-demo --link eureka:eureka"
+      args: "-p 8989:8989 -v /microservice-demo:/microservice-demo --link eureka:eureka"
   end
 
 end
