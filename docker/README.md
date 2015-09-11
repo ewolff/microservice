@@ -24,7 +24,7 @@ https://docs.docker.com/compose/#installation-and-set-up
     cmd.exe). Now the docker tool will use the newly created virtual
     machine as environment.
 - Change to the directory `docker` and run `docker-compose
-   build`followed by `docker-compose up`. 
+   build`followed by `docker-compose up -d`. 
 
 
 The result should be:

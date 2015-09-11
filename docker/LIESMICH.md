@@ -22,7 +22,7 @@ https://docs.docker.com/machine/#installation
     Powershell) /  `docker-machine.exe env --shell cmd dev` (Windows,
     cmd.exe) aus. Das docker Kommando nutzt nun die neue virtuelle Maschine als Umgebung.
  - Führe im Verzeichnis `docker` das Kommando `docker-compose
-   build` aus und dann `docker-compose up`. 
+   build` aus und dann `docker-compose up -d`. 
 
 Das Ergebnis:
 
