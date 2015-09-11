@@ -32,7 +32,9 @@ The result should be:
 - Docker Compose builds the Docker images and runs them.
 - Use `docker-machine ip dev` to find the IP adress of the virtual machine.
 - You can access the application at http://ipadresss:8080/ . It has a
-  web page with links to all other services.
+web page with links to all other services.
+- You can find the Eureka dashboard at http://ipadress:8761/.
+- The Hystrix dashboard can be found at http://ipadress:8080/turbine/hystrix .
 - You can access the Turbine dashboard by follwing the link on the
 page. The URL for the data stream of all Hystrix data of all Order
 nodes is http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the

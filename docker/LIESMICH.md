@@ -33,8 +33,8 @@ Das Ergebnis:
 - Die Anwendung steht unter http://ipadresss:8080/ zur
   Verfügung. Dort gibt es auch eine Seite mit Links zu den anderen
   Diensten.
-- Das Eureka-Dashboard steht unter http://127.0.0.1:18761/ zur Verfügung.
-- Das Hystrix-Dashboard steht unter http://127.0.0.1:18080/turbine/hystrix zur
+- Das Eureka-Dashboard steht unter http://ipadress:8761/ zur Verfügung.
+- Das Hystrix-Dashboard steht unter http://ipadress:8080/turbine/hystrix zur
   Verfügung. Die URL für einen einzelnen Order-Server dort lautet
   http://172.17.0.9:8080/hystrix.stream - wobei die IP-Adresse sich
   ändert. Sie kann im Eureka-Dashboard für den Dienst order-app
