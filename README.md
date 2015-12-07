@@ -1,5 +1,5 @@
-Microservice Sample for the Book
-======================
+Microservice Sample
+==============
 
 [German / Deutsch](LIESMICH.md)
 

@@ -1,5 +1,5 @@
-Microservice Demo für das Buch
-======================
+Microservice Demo
+=============
 
 Dieses Projekt ist eine Demo für das
 [Microservices Buch](http://microservices-buch.de/) ([English](http://microservices-book.com/)).
