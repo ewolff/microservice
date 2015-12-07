@@ -1,12 +1,12 @@
 Microservice Demo
 ==================
 
+Dieses Projekt ist eine Demo für das
+[Microservices Buch](http://microservices-buch.de/) ([English](http://microservices-book.com/)).
+
 Dieses Projekt erzeugt eine vollständigen Microservice-Demo in 
 Docker-Containern. Die Services sind mit Java, Spring und Spring Cloud
 implementiert.
-
-Es ist eine Demo für das
-[Microservices Buch](http://microservices-buch.de/) ([English](http://microservices-book.com/)).
 
 Das System hat drei Microservices:
 - Order um Bestellungen entgegenzunehmen
