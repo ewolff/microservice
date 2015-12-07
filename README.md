@@ -8,8 +8,7 @@ in Docker containers inside a Vagrant VM. The services are implemented
 in Java using Spring and Spring Cloud.
 
 It's a demo for my
-[German Microservices Book](http://microservices-buch.de/). There is a
-English translation at http://microservices-book.com/ .
+Microservices Book ([English](http://microservices-book.com/) / [German](http://microservices-buch.de/)) .
 
 
 It uses three microservices:
