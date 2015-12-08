@@ -1,9 +1,8 @@
 Microservice Demo mit Docker Machine und Dokcer 
 ============================
 
-Vagrant kann virtuelle Machine erstellen, auf denen dann Software
-installiert werden kann. In diesem Beispiel wird in der virtuellen
-Maschine Docker installiert und anschließend die Docker Container deployt.
+Docker Machine kann virtuelle Machine erstellen, auf denen dann Docker
+Container laufen können.
 
 Um das Beispiel ablaufen zu lassen:
 
