@@ -71,6 +71,12 @@
 			<version>2.6</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.6</version>
+		</dependency>
+
 	</dependencies>
 
 </project>
