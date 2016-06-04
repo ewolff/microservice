@@ -1,30 +1,32 @@
-eureka:
-  build: ../microservice-demo/microservice-demo-eureka-server
-  ports:
-    - "8761:8761"
-customer:
-  build: ../microservice-demo/microservice-demo-customer
-  links:
-   - eureka
-catalog:
-  build: ../microservice-demo/microservice-demo-catalog
-  links:
-   - eureka
-order:
-  build: ../microservice-demo/microservice-demo-order
-  links:
-   - eureka
-zuul:
-  build: ../microservice-demo/microservice-demo-zuul-server
-  links:
-   - eureka
-  ports:
-    - "8080:8080"
-turbine:
-  build: ../microservice-demo/microservice-demo-turbine-server
-  links:
-   - eureka
-  ports:
-    - "8989:8989"
+version: '2'
+services:
+  eureka:
+    build: ../microservice-demo/microservice-demo-eureka-server
+    ports:
+      - "8761:8761"
+  customer:
+    build: ../microservice-demo/microservice-demo-customer
+    links:
+     - eureka
+  catalog:
+    build: ../microservice-demo/microservice-demo-catalog
+    links:
+     - eureka
+  order:
+    build: ../microservice-demo/microservice-demo-order
+    links:
+     - eureka
+  zuul:
+    build: ../microservice-demo/microservice-demo-zuul-server
+    links:
+     - eureka
+    ports:
+      - "8080:8080"
+  turbine:
+    build: ../microservice-demo/microservice-demo-turbine-server
+    links:
+     - eureka
+    ports:
+      - "8989:8989"
 
 
