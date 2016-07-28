@@ -16,10 +16,13 @@ https://docs.docker.com/machine/#installation
 - Führe `docker-machine create  --virtualbox-memory "4096" --driver
   virtualbox dev` aus. Das erzeugt eine neue Umgebung names`dev`mit Docker
   Machine. Es wird eine virtuelle Machine in Virtual Box mit 4GB RAM sein.
- - Führe `eval "$(docker-machine env dev)"` (Linux / Mac OS X) oder
+- Führe `eval "$(docker-machine env dev)"` (Linux / Mac OS X) aus. Es
+  kann notwendig sein, die Shell anzugeben: 
+       `eval "$(docker-machine env --shell bash dev)"`. Für Windows
+       ist das Commando
     `docker-machine.exe env --shell powershell dev` (Windows,
     Powershell) /  `docker-machine.exe env --shell cmd dev` (Windows,
-    cmd.exe) aus. Das docker Kommando nutzt nun die neue virtuelle Maschine als Umgebung.
+    cmd.exe). Das docker Kommando nutzt nun die neue virtuelle Maschine als Umgebung.
  - Führe im Verzeichnis `docker` das Kommando `docker-compose
    build` aus und dann `docker-compose up -d`. 
 
