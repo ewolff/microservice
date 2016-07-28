@@ -18,7 +18,7 @@ https://docs.docker.com/compose/#installation-and-set-up
 - Execute `docker-machine create  --virtualbox-memory "4096" --driver
   virtualbox dev` . This will create a new environment called `dev`with Docker
   Machine. It will be virtual machine in Virtual Box with 4GB RAM.
-  - Execute `eval "$(docker-machine env dev)"` (Linux / Mac OS X). You
+- Execute `eval "$(docker-machine env dev)"` (Linux / Mac OS X). You
      might need to set your shell: `eval "$(docker-machine env --shell
      bash dev)"`. For Windows it's
     `docker-machine.exe env --shell powershell dev` (Windows,
