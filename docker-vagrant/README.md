@@ -14,9 +14,6 @@ To run the demo:
 - Go to directory `microservice-demo` and run `mvn package` there
 - Change to the directory `docker-vagrant` and run `vagrant
    up`. Each time you start the Vagrant VM the Docker containers will be started, too.
-- Use `vagrant halt` to shut down the system or `vagrant destroy` to
-  to delete the VM. Login to the VM using `vagrant ssh`. Do a new
-  provisioning using `vagrant provision` . Then the containers will be rebuild.
 
 The result should be:
 
@@ -33,3 +30,11 @@ changes. Look it up in the Eureka dashboard for service turbine. You
 can also connect to a Hystrix stream of an order service.  You need to
 use the address http://172.17.0.9:8080/hystrix.stream of the Order
 App. The IP address can be found in the Eureka dashboard.
+
+Additonal hints:
+
+- Use `vagrant halt` to shut down the system or `vagrant destroy` to
+  to delete the VM.
+- If you wantt login to the VM, please use `vagrant ssh`.
+- If you update the code, you need to rebuild it and then do a new
+  provisioning using `vagrant provision` . Then the Docker containers in the Vagrant VM will be rebuild.
