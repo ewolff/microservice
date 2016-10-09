@@ -10,8 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,13 +19,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CatalogApp.class)
-@IntegrationTest("server.port=0")
-@WebAppConfiguration
+@SpringBootTest(classes = CatalogApp.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 public class CatalogWebIntegrationTest {
 
@@ -84,16 +81,13 @@ public class CatalogWebIntegrationTest {
 		assertThat(body, containsString("<div"));
 	}
 
-	private <T> T getForMediaType(Class<T> value, MediaType mediaType,
-			String url) {
+	private <T> T getForMediaType(Class<T> value, MediaType mediaType, String url) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(mediaType));
 
-		HttpEntity<String> entity = new HttpEntity<String>("parameters",
-				headers);
+		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
-		ResponseEntity<T> resultEntity = restTemplate.exchange(url,
-				HttpMethod.GET, entity, value);
+		ResponseEntity<T> resultEntity = restTemplate.exchange(url, HttpMethod.GET, entity, value);
 
 		return resultEntity.getBody();
 	}

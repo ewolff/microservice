@@ -7,18 +7,15 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.ewolff.microservice.customer.CustomerApp;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CustomerApp.class)
-@IntegrationTest
-@WebAppConfiguration
+@SpringBootTest(classes = CustomerApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 public class CustomerConsumerDrivenContractTest {
 
@@ -28,15 +25,12 @@ public class CustomerConsumerDrivenContractTest {
 	@Test
 	public void testFindAll() {
 		Collection<Customer> result = customerClient.findAll();
-		assertEquals(
-				1,
+		assertEquals(1,
 				result.stream()
-						.filter(c -> (c.getName().equals("Wolff")
-								&& c.getFirstname().equals("Eberhard")
-								&& c.getEmail().equals(
-										"eberhard.wolff@gmail.com")
-								&& c.getStreet().equals("Unter den Linden") && c
-								.getCity().equals("Berlin"))).count());
+						.filter(c -> (c.getName().equals("Wolff") && c.getFirstname().equals("Eberhard")
+								&& c.getEmail().equals("eberhard.wolff@gmail.com")
+								&& c.getStreet().equals("Unter den Linden") && c.getCity().equals("Berlin")))
+						.count());
 	}
 
 	@Test

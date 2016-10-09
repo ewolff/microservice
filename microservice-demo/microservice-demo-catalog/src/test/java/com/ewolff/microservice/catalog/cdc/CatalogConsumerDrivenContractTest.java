@@ -7,8 +7,8 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -16,9 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.ewolff.microservice.catalog.CatalogApp;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CatalogApp.class)
-@IntegrationTest
-@WebAppConfiguration
+@SpringBootTest(classes = CatalogApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 public class CatalogConsumerDrivenContractTest {
 
@@ -28,12 +26,8 @@ public class CatalogConsumerDrivenContractTest {
 	@Test
 	public void testFindAll() {
 		Collection<Item> result = catalogClient.findAll();
-		assertEquals(
-				1,
-				result.stream()
-						.filter(i -> (i.getName().equals("iPod")
-								&& i.getPrice() == 42.0 && i.getItemId() == 1))
-						.count());
+		assertEquals(1, result.stream()
+				.filter(i -> (i.getName().equals("iPod") && i.getPrice() == 42.0 && i.getItemId() == 1)).count());
 	}
 
 	@Test

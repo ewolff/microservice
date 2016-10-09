@@ -10,12 +10,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -27,13 +26,9 @@ import com.ewolff.microservice.order.clients.CatalogClient;
 import com.ewolff.microservice.order.clients.Customer;
 import com.ewolff.microservice.order.clients.CustomerClient;
 import com.ewolff.microservice.order.clients.Item;
-import com.ewolff.microservice.order.logic.Order;
-import com.ewolff.microservice.order.logic.OrderRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = OrderApp.class)
-@WebAppConfiguration
-@IntegrationTest
+@SpringBootTest(classes = OrderApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 public class OrderWebIntegrationTest {
 
@@ -66,12 +61,9 @@ public class OrderWebIntegrationTest {
 	public void IsOrderListReturned() {
 		try {
 			Iterable<Order> orders = orderRepository.findAll();
-			assertTrue(StreamSupport
-					.stream(orders.spliterator(), false)
-					.noneMatch(
-							o -> (o.getCustomerId() == customer.getCustomerId())));
-			ResponseEntity<String> resultEntity = restTemplate.getForEntity(
-					orderURL(), String.class);
+			assertTrue(StreamSupport.stream(orders.spliterator(), false)
+					.noneMatch(o -> (o.getCustomerId() == customer.getCustomerId())));
+			ResponseEntity<String> resultEntity = restTemplate.getForEntity(orderURL(), String.class);
 			assertTrue(resultEntity.getStatusCode().is2xxSuccessful());
 			String orderList = resultEntity.getBody();
 			assertFalse(orderList.contains("Eberhard"));
@@ -91,8 +83,7 @@ public class OrderWebIntegrationTest {
 
 	@Test
 	public void IsOrderFormDisplayed() {
-		ResponseEntity<String> resultEntity = restTemplate.getForEntity(
-				orderURL() + "/form", String.class);
+		ResponseEntity<String> resultEntity = restTemplate.getForEntity(orderURL() + "/form", String.class);
 		assertTrue(resultEntity.getStatusCode().is2xxSuccessful());
 		assertTrue(resultEntity.getBody().contains("<form"));
 	}
