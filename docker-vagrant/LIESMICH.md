@@ -37,3 +37,9 @@ Das Ergebnis:
   wobei die IP-Adresse des Turbine Service sich aus dem Eureka Dashboard
   entnehmen lässt.
 
+Die folgenden Port werden auf `localhost` genutzt:
+
+- 18080 für die Web-Anwendung
+- 18761 für Eureka
+- 18989 für den Turbine-Server
+

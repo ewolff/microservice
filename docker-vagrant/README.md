@@ -38,3 +38,9 @@ Additonal hints:
 - If you wantt login to the VM, please use `vagrant ssh`.
 - If you update the code, you need to rebuild it and then do a new
   provisioning using `vagrant provision` . Then the Docker containers in the Vagrant VM will be rebuild.
+
+The following ports will be used on `localhost` :
+
+- 18080 for the web application
+- 18761 for Eureka
+- 18989 for the Turbine server

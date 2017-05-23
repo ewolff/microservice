@@ -46,3 +46,11 @@ Das Ergebnis:
   wobei die IP-Adresse des Turbine Service sich aus dem Eureka Dashboard
   entnehmen lässt.
 - Nutze `docker-machine rm dev`, um die virtuelle Maschine wieder zu zerstören.
+
+
+Die folgenden Port werden auf  dem Docker Host genutzt:
+
+- 8080 für die Web-Anwendung
+- 8761 für Eureka
+- 8989 für den Turbine-Server
+

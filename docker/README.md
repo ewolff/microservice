@@ -46,3 +46,10 @@ You need to use the address http://172.17.0.9:8080/hystrix.stream of
 the Order App. The IP address can be found in the Eureka dashboard.
 
 - Use `docker-machine rm dev` to destroy the virtual machine.
+
+
+The following ports will be used on the docker host :
+
+- 8080 for the web application
+- 8761 for Eureka
+- 8989 for the Turbine server
