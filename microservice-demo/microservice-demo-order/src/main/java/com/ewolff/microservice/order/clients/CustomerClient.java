@@ -80,7 +80,7 @@ public class CustomerClient {
 		converter.setObjectMapper(mapper);
 
 		return new RestTemplate(
-				Collections.<HttpMessageConverter<?>> singletonList(converter));
+				Collections.<HttpMessageConverter<?>>singletonList(converter));
 	}
 
 	public Collection<Customer> findAll() {
@@ -93,12 +93,9 @@ public class CustomerClient {
 		String url;
 		if (useRibbon) {
 			ServiceInstance instance = loadBalancer.choose("CUSTOMER");
-			url = "http://" + instance.getHost() + ":" + instance.getPort()
-					+ "/customer/";
-
+			url = String.format("http://%s:%s/customer/", instance.getHost(), instance.getPort());
 		} else {
-			url = "http://" + customerServiceHost + ":" + customerServicePort
-					+ "/customer/";
+			url = String.format("http://%s:%s/customer/", customerServiceHost, customerServicePort);
 		}
 		log.trace("Customer: URL {} ", url);
 		return url;

@@ -67,10 +67,11 @@ public class CatalogClient {
 		converter.setObjectMapper(mapper);
 
 		return new RestTemplate(
-				Collections.<HttpMessageConverter<?>> singletonList(converter));
+				Collections.<HttpMessageConverter<?>>singletonList(converter));
 	}
 
-	@HystrixCommand(fallbackMethod = "priceCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
+	@HystrixCommand(fallbackMethod = "priceCache", commandProperties = {
+			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
 	public double price(long itemId) {
 		return getOne(itemId).getPrice();
 	}
@@ -79,7 +80,8 @@ public class CatalogClient {
 		return getOneCache(itemId).getPrice();
 	}
 
-	@HystrixCommand(fallbackMethod = "getItemsCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
+	@HystrixCommand(fallbackMethod = "getItemsCache", commandProperties = {
+			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
 	public Collection<Item> findAll() {
 		PagedResources<Item> pagedResources = restTemplate.getForObject(
 				catalogURL(), ItemPagedResources.class);
@@ -95,17 +97,16 @@ public class CatalogClient {
 		String url;
 		if (useRibbon) {
 			ServiceInstance instance = loadBalancer.choose("CATALOG");
-			url = "http://" + instance.getHost() + ":" + instance.getPort()
-					+ "/catalog/";
+			url = String.format("http://%s:%s/catalog/", instance.getHost(), instance.getPort());
 		} else {
-			url = "http://" + catalogServiceHost + ":" + catalogServicePort
-					+ "/catalog/";
+			url = String.format("http://%s:%s/catalog/", catalogServiceHost, catalogServicePort);
 		}
 		log.trace("Catalog: URL {} ", url);
 		return url;
 	}
 
-	@HystrixCommand(fallbackMethod = "getOneCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
+	@HystrixCommand(fallbackMethod = "getOneCache", commandProperties = {
+			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
 	public Item getOne(long itemId) {
 		return restTemplate.getForObject(catalogURL() + itemId, Item.class);
 	}
