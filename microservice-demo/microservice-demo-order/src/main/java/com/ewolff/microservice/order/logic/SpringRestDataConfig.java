@@ -12,8 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class SpringRestDataConfig extends RepositoryRestMvcConfiguration {
 
 	@Override
-	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+	public RepositoryRestConfiguration config() {
+		RepositoryRestConfiguration config = super.config();
 		config.exposeIdsFor(Order.class);
+		return config;
 	}
 
 	@Override

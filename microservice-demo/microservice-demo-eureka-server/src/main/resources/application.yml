@@ -7,5 +7,7 @@ eureka:
     fetchRegistry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0
-
+    
+endpoints:
+  sensitive: false
   
