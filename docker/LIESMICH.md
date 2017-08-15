@@ -36,15 +36,18 @@ Das Ergebnis:
   Verfügung. Dort gibt es auch eine Seite mit Links zu den anderen
   Diensten.
 - Das Eureka-Dashboard steht unter http://localhost:8761/ zur Verfügung.
-- Das Hystrix-Dashboard steht unter http://localhost:8080/turbine/hystrix zur
-  Verfügung. Die URL für einen einzelnen Order-Server dort lautet
+- Das Hystrix-Dashboard steht unter http://localhost:8989/hystrix zur
+ Verfügung.
+  - Die URL für einen einzelnen Order-Server lautet
   http://172.17.0.9:8080/hystrix.stream - wobei die IP-Adresse sich
-  ändert. Sie kann im Eureka-Dashboard für den Dienst order-app
-  ermittelt werden. Die Alternative ist der Turbine Stream des Order
-  Services. Er enthält die Daten aller Order-Servives. Dazu muss die Adresse
-  http://172.17.0.10:8989/turbine.stream?cluster=ORDER der Order App genutzt werden -
-  wobei die IP-Adresse des Turbine Service sich aus dem Eureka Dashboard
-  entnehmen lässt.
+  ändert. Sie kann im Eureka-Dashboard für den Dienst ORDER
+  ermittelt werden.
+  - Die Alternative ist der Turbine Stream des Order
+  Services. Er enthält die Daten aller Order-Service-Instanzen. Dazu muss die URL
+  http://172.17.0.10:8989/turbine.stream?cluster=ORDER genutzt
+  werden. Die IP-Adresse des Turbine Service lässt sich aus dem Eureka Dashboard
+  entnehmen. `ORDER` definiert, dass der Order-Service dargestellt
+  werden soll.
 
 Bei der Nutzung von Docker Machine:
 

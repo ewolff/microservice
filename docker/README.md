@@ -36,14 +36,15 @@ The result should be:
 - You can access the application at http://localhost:8080/ . It has a
 web page with links to all other services.
 - You can find the Eureka dashboard at http://localhost:8761/.
-- The Hystrix dashboard can be found at http://localhost:8080/turbine/hystrix .
+- The Hystrix dashboard can be found at http://localhost:8989/hystrix .
 - You can access the Turbine dashboard by follwing the link on the
-page. The URL for the data stream of all Hystrix data of all Order
-nodes is http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the
-IP-Adresse changes. Look it up in the Eureka dashboard for service
-turbine. You can also connect to a Hystrix stream of an order service.
-You need to use the address http://172.17.0.9:8080/hystrix.stream of
-the Order App. The IP address can be found in the Eureka dashboard.
+ page.
+  - You need to use the address http://172.17.0.9:8080/hystrix.stream
+  of the Order App. The IP address can be found in the Eureka dashboard.
+  -  The URL for the data stream of all Hystrix data of all Order
+   nodes is http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the
+  IP-Adresse changes. Look up the IP adress in the Eureka dashboard for service
+  TURBINE. 
 
 If you are using Docker Machine:
 - Use `docker-machine ip dev` to find the IP adress of the virtual machine. Use this instead of `localhost` in the URLs above.
