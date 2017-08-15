@@ -13,18 +13,19 @@ To run the demo:
 - Install Docker Compose, see
 https://docs.docker.com/compose/#installation-and-set-up
 - Install Docker, see https://docs.docker.com/installation/
-- Install Docker Machine, see https://docs.docker.com/machine/#installation
+- Install Docker Machine, see https://docs.docker.com/machine/#installation (optional)
 - Go to directory `microservice-demo` and run `mvn package` there
-- Execute `docker-machine create  --virtualbox-memory "4096" --driver
-  virtualbox dev` . This will create a new environment called `dev`with Docker
-  Machine. It will be virtual machine in Virtual Box with 4GB RAM.
-- Execute `eval "$(docker-machine env dev)"` (Linux / Mac OS X). You
-     might need to set your shell: `eval "$(docker-machine env --shell
-     bash dev)"`. For Windows it's
-    `docker-machine.exe env --shell powershell dev` (Windows,
-    Powershell) /  `docker-machine.exe env --shell cmd dev` (Windows,
-    cmd.exe). Now the docker tool will use the newly created virtual
-    machine as environment.
+- If you want to use Docker Machine to run the demo on a different host (optional):
+  - Execute `docker-machine create  --virtualbox-memory "4096" --driver
+    virtualbox dev` . This will create a new environment called `dev`with Docker
+    Machine. It will be virtual machine in Virtual Box with 4GB RAM.
+  - Execute `eval "$(docker-machine env dev)"` (Linux / Mac OS X). You
+       might need to set your shell: `eval "$(docker-machine env --shell
+       bash dev)"`. For Windows it's
+      `docker-machine.exe env --shell powershell dev` (Windows,
+      Powershell) /  `docker-machine.exe env --shell cmd dev` (Windows,
+      cmd.exe). Now the docker tool will use the newly created virtual
+      machine as environment.
 - Change to the directory `docker` and run `docker-compose
    build`followed by `docker-compose up -d`. 
 
@@ -32,11 +33,10 @@ https://docs.docker.com/compose/#installation-and-set-up
 The result should be:
 
 - Docker Compose builds the Docker images and runs them.
-- Use `docker-machine ip dev` to find the IP adress of the virtual machine.
-- You can access the application at http://ipadresss:8080/ . It has a
+- You can access the application at http://localhost:8080/ . It has a
 web page with links to all other services.
-- You can find the Eureka dashboard at http://ipadress:8761/.
-- The Hystrix dashboard can be found at http://ipadress:8080/turbine/hystrix .
+- You can find the Eureka dashboard at http://localhost:8761/.
+- The Hystrix dashboard can be found at http://localhost:8080/turbine/hystrix .
 - You can access the Turbine dashboard by follwing the link on the
 page. The URL for the data stream of all Hystrix data of all Order
 nodes is http://172.17.0.10:8989/turbine.stream?cluster=ORDER - the
@@ -45,10 +45,12 @@ turbine. You can also connect to a Hystrix stream of an order service.
 You need to use the address http://172.17.0.9:8080/hystrix.stream of
 the Order App. The IP address can be found in the Eureka dashboard.
 
+If you are using Docker Machine:
+- Use `docker-machine ip dev` to find the IP adress of the virtual machine. Use this instead of `localhost` in the URLs above.
 - Use `docker-machine rm dev` to destroy the virtual machine.
 
 
-The following ports will be used on the docker host :
+The following ports will be used on the Docker host or your local machine:
 
 - 8080 for the web application
 - 8761 for Eureka
