@@ -35,8 +35,6 @@ package`. This will take a while:
 
 ```
 [~/microservice/microservice-demo]mvn clean package
-
-[~/microservice-consul/microservice-consul-demo]mvn clean package
 ....
 [INFO] 
 [INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ microservice-demo-zuul-server ---
