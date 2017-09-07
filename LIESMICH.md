@@ -38,7 +38,7 @@ Ausführen
 ---------
 
 Das Beispiel kann entweder mit [Vagrant](docker-vagrant/LIESMICH.md) betrieben werden - oder mit [Docker Machine und Docker
-Compose](docker/LIESMICH.md).
+Compose](docker/LIESMICH.md). Details finden sich in [Wie laufen](WIE-LAUFEN.md).
 
 Hinweise zum Code
 -----------------
