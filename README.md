@@ -41,6 +41,9 @@ How To Run
 The demo can be run with [Vagrant](docker-vagrant/README.md) or [Docker Machine and Docker
 Compose](docker/README.md).
 
+[How to run](HOW-TO-RUN.md) includes more details.
+
+
 Remarks on the Code
 -------------------
 
