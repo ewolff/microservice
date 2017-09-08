@@ -168,5 +168,11 @@ Container starten. Beispielsweise mit `docker exec -it
 ms_catalog_1 /bin/sh` oder du kannst in dem Container ein
 Kommando mit `docker exec ms_catalog_1 /bin/ls` ausführen.
 
+Es stehen nun bereit:
+
+* Die Anwendung selber durch Zuul unter http://localhost:8080/
+* Das Eureka Dashboard unter http://localhost:8761/
+* Das Hystrix Dashboard unter http://localhost:8989/
+
 Mit `docker-compose down` kannst Du alle Container beenden.
 

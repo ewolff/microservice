@@ -157,4 +157,10 @@ If you need to do more trouble shooting open a shell in the container
 using e.g. `docker exec -it ms_catalog_1 /bin/sh` or execute
 command using `docker exec ms_catalog_1 /bin/ls`.
 
+You can access:
+
+* The application through Zuul at http://localhost:8080/
+* The Eureka dashboard at http://localhost:8761/
+* The Hystrix dashboard at http://localhost:8989/
+
 You can terminate all containers using `docker-compose down`.
