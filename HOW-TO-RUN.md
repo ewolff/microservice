@@ -66,6 +66,9 @@ If this does not work:
 directory contains no configuration for a specific Maven repo. If in
 doubt: delete the file.
 
+* The tests use some ports on the local machine. Make sure that no
+server runs in the background.
+
 * Skip the tests: `mvn clean package package -Dmaven.test.skip=true`.
 
 * In rare cases dependencies might not be downloaded correctly. In

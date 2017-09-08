@@ -73,6 +73,9 @@ in deinem Heimatverzeichnis keine Konfiguration für ein spezielles
 Maven Repository enthalten. Im Zweifelsfall kannst du die Datei
 einfach löschen.
 
+* Die Tests nutzen einige Ports auf dem Rechner. Stelle sicher, dass
+  im Hintergrund keine Server laufen.
+
 * Führe die Tests beim Build nicht aus: `mvn clean package package
   -Dmaven.test.skip=true`.
 
