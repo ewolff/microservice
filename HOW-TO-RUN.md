@@ -11,10 +11,6 @@ This is a step-by-step guide how to run the example:
    sufficient. After the installation you should be able to execute
    `java` and `javac` on the command line.
 
-* Maven is needed to build the examples. See
-  https://maven.apache.org/download.cgi for installation . You should be
-  able to execute `mvn`on the command line after the installation.
-
 * The example run in Docker Containers. You need to install Docker
   Community Edition, see https://www.docker.com/community-edition/
   . You should be able to run `docker` after the installation.
@@ -30,11 +26,11 @@ This is a step-by-step guide how to run the example:
 
 ## Build
 
-Change to the directory `microservice-demo` and run `mvn clean
-package`. This will take a while:
+Change to the directory `microservice-demo` and run `./mvnw clean
+package` or `./mvnw.cmd clean package` (Windows). This will take a while:
 
 ```
-[~/microservice/microservice-demo]mvn clean package
+[~/microservice/microservice-demo]./mvnw clean package
 ....
 [INFO] 
 [INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ microservice-demo-zuul-server ---
@@ -69,7 +65,9 @@ doubt: delete the file.
 * The tests use some ports on the local machine. Make sure that no
 server runs in the background.
 
-* Skip the tests: `mvn clean package package -Dmaven.test.skip=true`.
+* Skip the tests: `./mvnw clean package package
+  -Dmaven.test.skip=true` or `./mvnw.cmd clean package package
+  -Dmaven.test.skip=true` (Windows).
 
 * In rare cases dependencies might not be downloaded correctly. In
   that case: Remove the directory `repository` in the directory `.m2`

@@ -14,10 +14,6 @@ Informationen zu Maven und Docker finden sich im
   nicht aus. Nach der Installation sollte sowohl `java` und `javac` in
   der Eingabeaufforderung möglich sein.
 
-* Die Projekte baut Maven. Zur Installation siehe
-  https://maven.apache.org/download.cgi>. Nun sollte `mvn` in der
-  Eingabeaufforderung eingegeben werden können.
-
 * Die Beispiele laufen in Docker Containern. Dazu ist eine
   Installation von Docker Community Edition notwendig, siehe
   https://www.docker.com/community-edition/ . Docker kann mit
@@ -38,11 +34,11 @@ Informationen zu Maven und Docker finden sich im
 
 ## Build
 
-Wechsel in das Verzeichnis `microservice-demo` und starte `mvn clean
-package`. Das wird einige Zeit dauern:
+Wechsel in das Verzeichnis `microservice-demo` und starte `./mvnw clean
+package` bzw. `./mvnw.cmd clean package` (Windows). Das wird einige Zeit dauern:
 
 ```
-[~/microservice/microservice-demo]mvn clean package
+[~/microservice/microservice-demo]./mvnw clean package
 ....
 [INFO] 
 [INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ microservice-demo-zuul-server ---
@@ -81,7 +77,8 @@ einfach löschen.
 * Die Tests nutzen einige Ports auf dem Rechner. Stelle sicher, dass
   im Hintergrund keine Server laufen.
 
-* Führe die Tests beim Build nicht aus: `mvn clean package package
+* Führe die Tests beim Build nicht aus: `./mvnw clean package package
+  -Dmaven.test.skip=true` bzw. `./mvnw.cmd clean package package
   -Dmaven.test.skip=true`.
 
 * In einigen selten Fällen kann es vorkommen, dass die Abhängigkeiten
