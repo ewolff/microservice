@@ -35,7 +35,7 @@ Informationen zu Maven und Docker finden sich im
 ## Build
 
 Wechsel in das Verzeichnis `microservice-demo` und starte `./mvnw clean
-package` bzw. `./mvnw.cmd clean package` (Windows). Das wird einige Zeit dauern:
+package` bzw. `mvnw.cmd clean package` (Windows). Das wird einige Zeit dauern:
 
 ```
 [~/microservice/microservice-demo]./mvnw clean package
@@ -77,8 +77,8 @@ einfach löschen.
 * Die Tests nutzen einige Ports auf dem Rechner. Stelle sicher, dass
   im Hintergrund keine Server laufen.
 
-* Führe die Tests beim Build nicht aus: `./mvnw clean package package
-  -Dmaven.test.skip=true` bzw. `./mvnw.cmd clean package package
+* Führe die Tests beim Build nicht aus: `./mvnw clean package
+  -Dmaven.test.skip=true` bzw. `mvnw.cmd clean package 
   -Dmaven.test.skip=true`.
 
 * In einigen selten Fällen kann es vorkommen, dass die Abhängigkeiten
