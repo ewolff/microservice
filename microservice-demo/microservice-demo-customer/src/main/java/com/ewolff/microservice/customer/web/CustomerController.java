@@ -26,7 +26,7 @@ public class CustomerController {
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView customer(@PathVariable("id") long id) {
 		return new ModelAndView("customer", "customer",
-				customerRepository.findOne(id));
+				customerRepository.findById(id).get());
 	}
 
 	@RequestMapping("/list.html")
@@ -56,7 +56,7 @@ public class CustomerController {
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.DELETE)
 	public ModelAndView delete(@PathVariable("id") long id) {
-		customerRepository.delete(id);
+		customerRepository.deleteById(id);
 		return new ModelAndView("success");
 	}
 

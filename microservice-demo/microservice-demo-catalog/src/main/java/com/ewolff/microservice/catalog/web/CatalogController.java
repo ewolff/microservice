@@ -24,7 +24,7 @@ public class CatalogController {
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView Item(@PathVariable("id") long id) {
-		return new ModelAndView("item", "item", itemRepository.findOne(id));
+		return new ModelAndView("item", "item", itemRepository.findById(id).get());
 	}
 
 	@RequestMapping("/list.html")
@@ -63,7 +63,7 @@ public class CatalogController {
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.DELETE)
 	public ModelAndView delete(@PathVariable("id") long id) {
-		itemRepository.delete(id);
+		itemRepository.deleteById(id);
 		return new ModelAndView("success");
 	}
 
