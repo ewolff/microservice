@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.hibernate.validator.constraints.Email;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Customer {
