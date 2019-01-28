@@ -89,6 +89,7 @@ public class CatalogClient {
 		return pagedResources.getContent();
 	}
 
+	@SuppressWarnings("unused")
 	private Collection<Item> getItemsCache() {
 		return itemsCache;
 	}

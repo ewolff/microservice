@@ -11,8 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-
 import com.ewolff.microservice.catalog.CatalogApp;
 
 @RunWith(SpringJUnit4ClassRunner.class)
