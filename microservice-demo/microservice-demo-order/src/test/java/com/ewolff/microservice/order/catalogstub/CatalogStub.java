@@ -3,8 +3,8 @@ package com.ewolff.microservice.order.catalogstub;
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.PagedResources.PageMetadata;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.PagedModel.PageMetadata;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,8 +29,8 @@ public class CatalogStub {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public PagedResources<Item> getAll() {
-		return new PagedResources<Item>(
+	public PagedModel<Item> getAll() {
+		return new PagedModel<Item>(
 				Arrays.asList(new Item(1, "iPod", 42.0)), new PageMetadata(1,
 						0, 1));
 	}

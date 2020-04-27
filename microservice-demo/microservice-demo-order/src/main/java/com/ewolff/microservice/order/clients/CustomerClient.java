@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.hal.Jackson2HalModule;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.mediatype.hal.Jackson2HalModule;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -34,7 +34,7 @@ public class CustomerClient {
 	private boolean useRibbon;
 	private LoadBalancerClient loadBalancer;
 
-	static class CustomerPagedResources extends PagedResources<Customer> {
+	static class CustomerPagedResources extends PagedModel<Customer> {
 
 	}
 
@@ -84,8 +84,9 @@ public class CustomerClient {
 	}
 
 	public Collection<Customer> findAll() {
-		PagedResources<Customer> pagedResources = getRestTemplate()
-				.getForObject(customerURL(), CustomerPagedResources.class);
+		PagedModel<Customer> pagedResources = getRestTemplate()
+																.getForObject(customerURL(),
+																		CustomerPagedResources.class);
 		return pagedResources.getContent();
 	}
 

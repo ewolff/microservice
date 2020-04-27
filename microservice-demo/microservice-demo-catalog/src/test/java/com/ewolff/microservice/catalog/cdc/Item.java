@@ -3,11 +3,11 @@ package com.ewolff.microservice.catalog.cdc;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Item extends ResourceSupport {
+public class Item extends RepresentationModel {
 
 	private String name;
 

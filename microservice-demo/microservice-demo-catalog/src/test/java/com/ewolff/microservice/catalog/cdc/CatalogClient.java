@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.hal.Jackson2HalModule;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.mediatype.hal.Jackson2HalModule;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class CatalogClient {
 
-	public static class ItemPagedResources extends PagedResources<Item> {
+	public static class ItemPagedResources extends PagedModel<Item> {
 	}
 
 	private final RestTemplate restTemplate;
@@ -59,7 +59,7 @@ public class CatalogClient {
 		converter.setObjectMapper(mapper);
 
 		return new RestTemplate(
-				Collections.<HttpMessageConverter<?>> singletonList(converter));
+				Collections.<HttpMessageConverter<?>>singletonList(converter));
 	}
 
 	public double price(long itemId) {
@@ -67,7 +67,7 @@ public class CatalogClient {
 	}
 
 	public Collection<Item> findAll() {
-		PagedResources<Item> pagedResources = restTemplate.getForObject(
+		PagedModel<Item> pagedResources = restTemplate.getForObject(
 				catalogURL(), ItemPagedResources.class);
 		return pagedResources.getContent();
 	}
