@@ -25,7 +25,7 @@
 
 	<properties>
 		<java.version>10</java.version>
-		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+		<spring-cloud.version>Hoxton.SR6</spring-cloud.version>
 	</properties>
 
 	<dependencyManagement>
