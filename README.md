@@ -1,10 +1,15 @@
 Microservice Sample
 ==============
 
-[German / Deutsch](LIESMICH.md)
+<details>
+<summary>Translations:</summary>
+
+- [German / Deutsch](LIESMICH.md)
+
+</details>
 
 This is a sample for my
-Microservices Book ([English](http://microservices-book.com/) / [German](http://microservices-buch.de/)) .
+Microservices Book ([English](http://microservices-book.com/) / [German](http://microservices-buch.de/)).
 
 This project creates a VM with the complete micro service demo system
 in Docker containers inside a Vagrant VM. The services are implemented
@@ -43,11 +48,18 @@ Compose](docker/README.md).
 
 [How to run](HOW-TO-RUN.md) includes more details.
 
+<details>
+<summary>Translations:</summary>
+
+- [German / Deutsch](WIE-LAUFEN.md)
+
+</details>
+
 
 Remarks on the Code
 -------------------
 
-The servers for the infrastruture are pretty simple thanks to Spring Cloud:
+The servers for the infrastructure are pretty simple thanks to Spring Cloud:
 
 - microservice-demo-eureka is the Eureka server for service discovery.
 - microservice-demo-zuul is the Zuul server. It distributes the requests to the three microservices.
@@ -59,4 +71,4 @@ The microservices are:
 - microservice-demo-order does order processing. It uses microservice-demo-catalog and microservice-demo-customer. Ribbon is used for load balancing and Hystrix for resilience.
 
 
-The microservices have an Java main application in src/test/java to run them stand alone. microservice-demo-order uses a stub for the other services then. Also there are tests that use customer driven contracts. That is why it is ensured that the services provide the correct interface. These CDC tests are used in microservice-demo-order to verify the stubs. In microserivce-demo-customer and microserivce-demo-catalog they are used to verify the implemented REST services.
+The microservices have a Java main application in src/test/java to run them stand alone. microservice-demo-order uses a stub for the other services then. Also, there are tests that use customer driven contracts. That is why it is ensured that the services provide the correct interface. These CDC tests are used in microservice-demo-order to verify the stubs. In microserivce-demo-customer and microserivce-demo-catalog they are used to verify the implemented REST services.
