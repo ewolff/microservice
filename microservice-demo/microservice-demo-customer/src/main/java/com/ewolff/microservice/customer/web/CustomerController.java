@@ -25,14 +25,12 @@ public class CustomerController {
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView customer(@PathVariable("id") long id) {
-		return new ModelAndView("customer", "customer",
-				customerRepository.findById(id).get());
+		return new ModelAndView("customer", "customer", customerRepository.findById(id).get());
 	}
 
-	@RequestMapping("/list.html")
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView customerList() {
-		return new ModelAndView("customerlist", "customers",
-				customerRepository.findAll());
+		return new ModelAndView("customerlist", "customers", customerRepository.findAll());
 	}
 
 	@RequestMapping(value = "/form.html", method = RequestMethod.GET)
@@ -47,8 +45,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.PUT)
-	public ModelAndView put(@PathVariable("id") long id, Customer customer,
-			HttpServletRequest httpRequest) {
+	public ModelAndView put(@PathVariable("id") long id, Customer customer, HttpServletRequest httpRequest) {
 		customer.setId(id);
 		customerRepository.save(customer);
 		return new ModelAndView("success");

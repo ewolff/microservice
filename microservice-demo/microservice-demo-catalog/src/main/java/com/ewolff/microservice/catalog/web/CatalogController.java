@@ -27,7 +27,7 @@ public class CatalogController {
 		return new ModelAndView("item", "item", itemRepository.findById(id).get());
 	}
 
-	@RequestMapping("/list.html")
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView ItemList() {
 		return new ModelAndView("itemlist", "items", itemRepository.findAll());
 	}
@@ -50,15 +50,14 @@ public class CatalogController {
 		return new ModelAndView("success");
 	}
 
-	@RequestMapping(value = "/searchForm.html", produces = MediaType.TEXT_HTML_VALUE)
+	@RequestMapping(value = "/searchForm.html", produces = MediaType.TEXT_HTML_VALUE, method = RequestMethod.GET)
 	public ModelAndView searchForm() {
 		return new ModelAndView("searchForm");
 	}
 
-	@RequestMapping(value = "/searchByName.html", produces = MediaType.TEXT_HTML_VALUE)
+	@RequestMapping(value = "/searchByName.html", produces = MediaType.TEXT_HTML_VALUE, method = RequestMethod.GET)
 	public ModelAndView search(@RequestParam("query") String query) {
-		return new ModelAndView("itemlist", "items",
-				itemRepository.findByNameContaining(query));
+		return new ModelAndView("itemlist", "items", itemRepository.findByNameContaining(query));
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.DELETE)

@@ -26,8 +26,7 @@ class OrderController {
 	private CatalogClient catalogClient;
 
 	@Autowired
-	private OrderController(OrderService orderService,
-			OrderRepository orderRepository, CustomerClient customerClient,
+	private OrderController(OrderService orderService, OrderRepository orderRepository, CustomerClient customerClient,
 			CatalogClient catalogClient) {
 		super();
 		this.orderRepository = orderRepository;
@@ -46,10 +45,9 @@ class OrderController {
 		return customerClient.findAll();
 	}
 
-	@RequestMapping("/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView orderList() {
-		return new ModelAndView("orderlist", "orders",
-				orderRepository.findAll());
+		return new ModelAndView("orderlist", "orders", orderRepository.findAll());
 	}
 
 	@RequestMapping(value = "/form.html", method = RequestMethod.GET)
