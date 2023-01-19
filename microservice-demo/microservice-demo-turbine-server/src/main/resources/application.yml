@@ -16,4 +16,8 @@ turbine:
     clusterConfig: ORDER
   appConfig: order
 
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "**"
+
   
